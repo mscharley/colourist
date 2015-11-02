@@ -10,8 +10,12 @@ script:
 - vendor/bin/pake $TASK
 
 env:
-- TASK="phpcs"
 - TASK="phpunit"
+
+matrix:
+  include:
+  - php: 5.6
+    env: TASK="phpcs"
 
 cache:
   directories:
