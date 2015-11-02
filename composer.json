@@ -1,0 +1,15 @@
+{
+    "name": "mscharley/colourist",
+    "description": "Colour manipulation library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthew Scharley",
+            "email": "matt.scharley@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.0"
+    }
+}
