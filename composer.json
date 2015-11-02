@@ -13,9 +13,11 @@
       "Colourist\\": "lib"
     }
   },
-  "require": {},
+  "require": {
+    "php": ">= 5.4"
+  },
   "require-dev": {
-    "phpunit/phpunit": "~5.0",
+    "phpunit/phpunit": "~4.0",
     "indeyets/pake": "~1.99"
   }
 }
