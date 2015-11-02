@@ -10,6 +10,12 @@ function run_phpcs() {
   pake_sh('vendor/bin/phpcs lib tests');
 }
 
+pake_desc('Run PHPCBF to attempt to fix CS issues');
+pake_task('phpcbf');
+function run_phpcbf() {
+  pake_sh('vendor/bin/phpcbf lib tests');
+}
+
 pake_desc('Run PHPMD');
 pake_task('phpmd');
 function run_phpmd() {
