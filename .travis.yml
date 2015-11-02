@@ -10,6 +10,7 @@ script:
 - vendor/bin/pake $TASK
 
 env:
+- TASK="phpcs"
 - TASK="phpunit"
 
 cache:
