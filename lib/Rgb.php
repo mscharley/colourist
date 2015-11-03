@@ -42,7 +42,8 @@ class Rgb extends Colour
    * @return int
    *   The red component of this RGB.
    */
-  public function red() {
+  public function red()
+  {
     return round($this->red);
   }
 
@@ -52,7 +53,8 @@ class Rgb extends Colour
    * @return int
    *   The green component of this RGB.
    */
-  public function green() {
+  public function green()
+  {
     return round($this->green);
   }
 
@@ -62,7 +64,8 @@ class Rgb extends Colour
    * @return int
    *   The blue component of this RGB.
    */
-  public function blue() {
+  public function blue()
+  {
     return round($this->blue);
   }
 
@@ -80,7 +83,8 @@ class Rgb extends Colour
    * @return Hsl
    *   The HSL transformation of this colour.
    */
-  public function toHsl() {
+  public function toHsl()
+  {
     // TODO: Implement toHsl() method.
   }
 
@@ -90,7 +94,8 @@ class Rgb extends Colour
    * @return Rgb
    *   The RGB transformation of this colour.
    */
-  public function toHsb() {
+  public function toHsb()
+  {
     // TODO: Implement toHsb() method.
   }
 }
