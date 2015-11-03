@@ -4,7 +4,7 @@ namespace Colourist;
 
 use Respect\Validation\Validator as v;
 
-class Hsb extends SaturatableColour
+class HSB extends SaturatableColour
 {
   /** @var float */
   protected $hue;
@@ -74,7 +74,7 @@ class Hsb extends SaturatableColour
   /**
    * Convert this colour to an RGB colour.
    *
-   * @return Rgb
+   * @return RGB
    *   The RGB transformation of this colour.
    */
   public function toRgb()
@@ -85,7 +85,7 @@ class Hsb extends SaturatableColour
   /**
    * Convert this colour to an HSL colour.
    *
-   * @return Hsl
+   * @return HSL
    *   The HSL transformation of this colour.
    */
   public function toHsl()

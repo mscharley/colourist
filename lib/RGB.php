@@ -4,7 +4,7 @@ namespace Colourist;
 
 use Respect\Validation\Validator as v;
 
-class Rgb extends Colour
+class RGB extends Colour
 {
   /** @var float */
   protected $red;
@@ -110,7 +110,7 @@ class Rgb extends Colour
   /**
    * Convert this colour to an HSL colour.
    *
-   * @return Hsl
+   * @return HSL
    *   The HSL transformation of this colour.
    */
   public function toHsl()
@@ -118,7 +118,7 @@ class Rgb extends Colour
     if (!isset($this->hsl)) {
       $lightness = ($this->M + $this->m) / 2;
       $saturation = $this->chroma === 0 ? 0 : $this->chroma / (1 - abs(2 * $lightness - 1));
-      $this->hsl = new Hsl($this->calculateHue(), $saturation * 100, $lightness * 100, $this);
+      $this->hsl = new HSL($this->calculateHue(), $saturation * 100, $lightness * 100, $this);
     }
 
     return $this->hsl;
@@ -127,14 +127,14 @@ class Rgb extends Colour
   /**
    * Convert this colour to an RGB colour.
    *
-   * @return Rgb
+   * @return RGB
    *   The RGB transformation of this colour.
    */
   public function toHsb()
   {
     if (!isset($this->hsb)) {
       $saturation = $this->chroma === 0 ? 0 : $this->chroma / $this->M;
-      $this->hsb = new Hsb($this->calculateHue(), $saturation * 100, $this->M * 100, $this);
+      $this->hsb = new HSB($this->calculateHue(), $saturation * 100, $this->M * 100, $this);
     }
 
     return $this->hsb;

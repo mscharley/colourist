@@ -131,13 +131,13 @@ abstract class Colour
     v::string()->startsWith('#')->hexRgbColor()->assert($hex);
     $red = $green = $blue = 0;
     sscanf($hex, '#%2x%2x%2x', $red, $green, $blue);
-    return new Rgb($red, $green, $blue);
+    return new RGB($red, $green, $blue);
   }
 
   /**
    * Convert this colour to an RGB colour.
    *
-   * @return Rgb
+   * @return RGB
    *   The RGB transformation of this colour.
    */
   abstract public function toRgb();
@@ -145,7 +145,7 @@ abstract class Colour
   /**
    * Convert this colour to an HSL colour.
    *
-   * @return Hsl
+   * @return HSL
    *   The HSL transformation of this colour.
    */
   abstract public function toHsl();
@@ -153,7 +153,7 @@ abstract class Colour
   /**
    * Convert this colour to an HSB colour.
    *
-   * @return Hsb
+   * @return HSB
    *   The HSB transformation of this colour.
    */
   abstract public function toHsb();
@@ -164,7 +164,7 @@ abstract class Colour
    * HSV and HSB are the same thing but both names are in wide use, so we
    * provide both
    *
-   * @return Hsb
+   * @return HSB
    *   The HSB version of this colour.
    */
   public function toHsv()

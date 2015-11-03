@@ -5,7 +5,7 @@ class ColourTest extends PHPUnit_Framework_TestCase
   public function testFromHex()
   {
     $colour = \Colourist\Colour::fromHex('#0A141E');
-    /** @var \Colourist\Rgb $colour */
+    /** @var \Colourist\RGB $colour */
     $this->assertSame(10, $colour->red());
     $this->assertSame(20, $colour->green());
     $this->assertSame(30, $colour->blue());

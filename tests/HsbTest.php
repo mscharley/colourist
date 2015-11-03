@@ -4,7 +4,7 @@ class HsbTest extends PHPUnit_Framework_TestCase
 {
   public function testGetters()
   {
-    $c = new \Colourist\Hsb(250, 40, 60);
+    $c = new \Colourist\HSB(250, 40, 60);
     $this->assertSame(250, $c->hue());
     $this->assertSame(40, $c->saturation());
     $this->assertSame(60, $c->brightness());
@@ -12,9 +12,9 @@ class HsbTest extends PHPUnit_Framework_TestCase
 
   public function testHueWrapping()
   {
-    $c = new \Colourist\Hsb(390, 40, 60);
+    $c = new \Colourist\HSB(390, 40, 60);
     $this->assertSame(30, $c->hue());
-    $c = new \Colourist\Hsb(-330, 40, 60);
+    $c = new \Colourist\HSB(-330, 40, 60);
     $this->assertSame(30, $c->hue());
   }
 
@@ -23,7 +23,7 @@ class HsbTest extends PHPUnit_Framework_TestCase
    */
   public function testSaturationOverBounds()
   {
-    new \Colourist\Hsb(250, 101, 60);
+    new \Colourist\HSB(250, 101, 60);
   }
 
   /**
@@ -31,7 +31,7 @@ class HsbTest extends PHPUnit_Framework_TestCase
    */
   public function testSaturationUnderBounds()
   {
-    new \Colourist\Hsb(250, -1, 60);
+    new \Colourist\HSB(250, -1, 60);
   }
 
   /**
@@ -39,7 +39,7 @@ class HsbTest extends PHPUnit_Framework_TestCase
    */
   public function testBrightnessOverBounds()
   {
-    new \Colourist\Hsb(250, 40, 101);
+    new \Colourist\HSB(250, 40, 101);
   }
 
   /**
@@ -47,6 +47,6 @@ class HsbTest extends PHPUnit_Framework_TestCase
    */
   public function testBrightnessUnderBounds()
   {
-    new \Colourist\Hsb(250, 40, -1);
+    new \Colourist\HSB(250, 40, -1);
   }
 }
