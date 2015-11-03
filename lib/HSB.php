@@ -38,6 +38,8 @@ class HSB extends SaturatableColour
     $this->saturation = $saturation / 100;
     $this->brightness = $brightness / 100;
 
+    $this->chroma = $this->brightness * $this->saturation;
+
     $this->hsb = $this;
     if (isset($original)) {
       $this->rgb = $original->rgb;

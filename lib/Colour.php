@@ -18,9 +18,15 @@ use Respect\Validation\Validator as v;
  */
 abstract class Colour
 {
+  /** @var RGB */
   protected $rgb = NULL;
+  /** @var HSL */
   protected $hsl = NULL;
+  /** @var HSB */
   protected $hsb = NULL;
+
+  /** @var float */
+  protected $chroma;
 
   private static $percentage;
 
@@ -37,6 +43,14 @@ abstract class Colour
     }
 
     self::$percentage->assert($value);
+  }
+
+  /**
+   * @return float
+   */
+  public function chroma()
+  {
+    return $this->chroma;
   }
 
   /**

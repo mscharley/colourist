@@ -17,8 +17,6 @@ class RGB extends Colour
   protected $M;
   /** @var float */
   protected $m;
-  /** @var float */
-  protected $chroma;
 
   const MAX_RGB = 0xff;
 
@@ -138,14 +136,6 @@ class RGB extends Colour
     }
 
     return $this->hsb;
-  }
-
-  /**
-   * @return float
-   */
-  public function chroma()
-  {
-    return $this->chroma;
   }
 
   /**
