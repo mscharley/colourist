@@ -27,7 +27,7 @@ pake_task('phpunit');
 function run_phpunit() {
   $cc_token = getenv('CODECLIMATE_REPO_TOKEN');
   $cc = !empty($cc_token);
-  print pake_sh('vendor/bin/phpunit tests' . ($cc ? ' --coverage-clover build/logs/clover.xml' : ''));
+  print pake_sh('vendor/bin/phpunit' . ($cc ? ' --coverage-clover build/logs/clover.xml' : ''));
   if ($cc) {
     print pake_sh('vendor/bin/test-reporter');
   }
