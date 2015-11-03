@@ -2,12 +2,49 @@
 
 namespace Colourist;
 
-class Hsb extends Colour
+use Respect\Validation\Validator as v;
+
+class Hsb extends SaturatableColour
 {
   /** @var float */
   protected $hue;
   /** @var float */
   protected $brightness;
+
+  /**
+   * Create a new RGB from the given red, green and blue channels.
+   *
+   * @param float $hue
+   *   Hue is a value between 0 and 360 representing the hue of this colour. If
+   *   a number outside this range is provided it will be wrapped to fit inside
+   *   this range.
+   * @param float $saturation
+   *   Saturation of this colour.
+   * @param float $brightness
+   *   Brightness of this colour.
+   * @param Colour $original
+   *   A colour that this was transformed from.
+   */
+  public function __construct($hue, $saturation, $brightness, Colour $original = NULL)
+  {
+    $percentage = v::numeric()->min(0, TRUE)->max(100, TRUE);
+    v::numeric()->assert($hue);
+    $percentage->assert($saturation);
+    $percentage->assert($brightness);
+
+    $this->hue = $hue % 360;
+    if ($this->hue < 0) {
+      $this->hue += 360;
+    }
+    $this->saturation = $saturation / 100;
+    $this->brightness = $brightness / 100;
+
+    $this->hsb = $this;
+    if (isset($original)) {
+      $this->rgb = $original->rgb;
+      $this->hsl = $original->hsl;
+    }
+  }
 
   /**
    * @inheritDoc

@@ -39,4 +39,11 @@ abstract class SaturatableColour extends Colour {
     // TODO: Implement desaturate() method.
     return $this;
   }
+
+  /**
+   * @return int
+   */
+  public function getSaturation() {
+    return (int) round($this->saturation * 100);
+  }
 }

@@ -134,10 +134,10 @@ abstract class Colour
   abstract public function toHsl();
 
   /**
-   * Convert this colour to an RGB colour.
+   * Convert this colour to an HSB colour.
    *
-   * @return Rgb
-   *   The RGB transformation of this colour.
+   * @return Hsb
+   *   The HSB transformation of this colour.
    */
   abstract public function toHsb();
 
