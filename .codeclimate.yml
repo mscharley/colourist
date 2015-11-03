@@ -7,6 +7,9 @@ engines:
     enabled: true
     config:
       rulesets: "cleancode,codesize,controversial,design,unusedcode"
+    checks:
+      CleanCode/StaticAccess:
+        enabled: false
   fixme:
     enabled: true
 ratings:
