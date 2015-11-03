@@ -141,7 +141,6 @@ class RGB extends Colour
   }
 
   /**
-   * @todo Consider defining this on Colour.
    * @return float
    */
   public function chroma()
