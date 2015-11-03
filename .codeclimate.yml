@@ -10,4 +10,9 @@ ratings:
   paths:
   - "lib/**.php"
   - "tests/**.php"
-exclude_paths: []
+exclude_paths:
+- "composer.json"
+- "composer.lock"
+- "LICENSE"
+- "phpcs.xml"
+- "pakefile.php"
