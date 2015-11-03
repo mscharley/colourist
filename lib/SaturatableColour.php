@@ -2,6 +2,8 @@
 
 namespace Colourist;
 
+use Respect\Validation\Validator as v;
+
 abstract class SaturatableColour extends Colour
 {
   /** @var float */
@@ -18,11 +20,7 @@ abstract class SaturatableColour extends Colour
    *
    * @see SaturatableColour::desaturate()
    */
-  public function saturate($amount)
-  {
-    // TODO: Implement saturate() method.
-    return $this;
-  }
+  public abstract function saturate($amount);
 
   /**
    * Desaturate this colour by a certain amount.
@@ -35,11 +33,7 @@ abstract class SaturatableColour extends Colour
    *
    * @see SaturatableColour::saturate()
    */
-  public function desaturate($amount)
-  {
-    // TODO: Implement desaturate() method.
-    return $this;
-  }
+  public abstract function desaturate($amount);
 
   /**
    * @return int

@@ -18,6 +18,70 @@ class HslTest extends PHPUnit_Framework_TestCase
     $this->assertSame(30, $c->hue());
   }
 
+  public function testSaturate()
+  {
+    $c = (new \Colourist\HSL(250, 50, 50))->saturate(30);
+    $this->assertSame(250, $c->hue());
+    $this->assertSame(80, $c->saturation());
+    $this->assertSame(50, $c->lightness());
+  }
+
+  /**
+   * @expectedException Respect\Validation\Exceptions\AllOfException
+   */
+  public function testSaturateOverBounds()
+  {
+    (new \Colourist\HSL(250, 50, 50))->saturate(60);
+  }
+
+  public function testDesaturate()
+  {
+    $c = (new \Colourist\HSL(250, 50, 50))->desaturate(30);
+    $this->assertSame(250, $c->hue());
+    $this->assertSame(20, $c->saturation());
+    $this->assertSame(50, $c->lightness());
+  }
+
+  /**
+   * @expectedException Respect\Validation\Exceptions\AllOfException
+   */
+  public function testDesaturateUnderBounds()
+  {
+    (new \Colourist\HSL(250, 50, 50))->desaturate(60);
+  }
+
+  public function testLighten()
+  {
+    $c = (new \Colourist\HSL(250, 50, 50))->lighten(30);
+    $this->assertSame(250, $c->hue());
+    $this->assertSame(50, $c->saturation());
+    $this->assertSame(80, $c->lightness());
+  }
+
+  /**
+   * @expectedException Respect\Validation\Exceptions\AllOfException
+   */
+  public function testLightenOverBounds()
+  {
+    (new \Colourist\HSL(250, 50, 50))->lighten(60);
+  }
+
+  public function testDarken()
+  {
+    $c = (new \Colourist\HSL(250, 50, 50))->darken(30);
+    $this->assertSame(250, $c->hue());
+    $this->assertSame(50, $c->saturation());
+    $this->assertSame(20, $c->lightness());
+  }
+
+  /**
+   * @expectedException Respect\Validation\Exceptions\AllOfException
+   */
+  public function testDarkenUnderBounds()
+  {
+    (new \Colourist\HSL(250, 50, 50))->darken(60);
+  }
+
   /**
    * @expectedException Respect\Validation\Exceptions\AllOfException
    */

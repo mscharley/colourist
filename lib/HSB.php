@@ -52,8 +52,8 @@ class HSB extends SaturatableColour
    */
   public function brighten($amount)
   {
-    // TODO: Implement brighten() method.
-    return $this;
+    $this->validatePercentage($amount);
+    return new HSB($this->hue(), $this->saturation(), $this->brightness() + $amount);
   }
 
   /**
@@ -61,8 +61,24 @@ class HSB extends SaturatableColour
    */
   public function dim($amount)
   {
-    // TODO: Implement dim() method.
-    return $this;
+    $this->validatePercentage($amount);
+    return new HSB($this->hue(), $this->saturation(), $this->brightness() - $amount);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function saturate($amount) {
+    $this->validatePercentage($amount);
+    return new HSB($this->hue(), $this->saturation() + $amount, $this->brightness());
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function desaturate($amount) {
+    $this->validatePercentage($amount);
+    return new HSB($this->hue(), $this->saturation() - $amount, $this->brightness());
   }
 
   /**

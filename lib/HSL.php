@@ -52,8 +52,8 @@ class HSL extends SaturatableColour
    */
   public function lighten($amount)
   {
-    // TODO: Implement this.
-    return $this;
+    $this->validatePercentage($amount);
+    return new HSL($this->hue(), $this->saturation(), $this->lightness() + $amount);
   }
 
   /**
@@ -61,8 +61,24 @@ class HSL extends SaturatableColour
    */
   public function darken($amount)
   {
-    // TODO: Implement this.
-    return $this;
+    $this->validatePercentage($amount);
+    return new HSL($this->hue(), $this->saturation(), $this->lightness() - $amount);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function saturate($amount) {
+    $this->validatePercentage($amount);
+    return new HSL($this->hue(), $this->saturation() + $amount, $this->lightness());
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function desaturate($amount) {
+    $this->validatePercentage($amount);
+    return new HSL($this->hue(), $this->saturation() - $amount, $this->lightness());
   }
 
   /**

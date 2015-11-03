@@ -18,6 +18,70 @@ class HsbTest extends PHPUnit_Framework_TestCase
     $this->assertSame(30, $c->hue());
   }
 
+  public function testSaturate()
+  {
+    $c = (new \Colourist\HSB(250, 50, 50))->saturate(30);
+    $this->assertSame(250, $c->hue());
+    $this->assertSame(80, $c->saturation());
+    $this->assertSame(50, $c->brightness());
+  }
+
+  /**
+   * @expectedException Respect\Validation\Exceptions\AllOfException
+   */
+  public function testSaturateOverBounds()
+  {
+    (new \Colourist\HSB(250, 50, 50))->saturate(60);
+  }
+
+  public function testDesaturate()
+  {
+    $c = (new \Colourist\HSB(250, 50, 50))->desaturate(30);
+    $this->assertSame(250, $c->hue());
+    $this->assertSame(20, $c->saturation());
+    $this->assertSame(50, $c->brightness());
+  }
+
+  /**
+   * @expectedException Respect\Validation\Exceptions\AllOfException
+   */
+  public function testDesaturateUnderBounds()
+  {
+    (new \Colourist\HSB(250, 50, 50))->desaturate(60);
+  }
+
+  public function testBrighten()
+  {
+    $c = (new \Colourist\HSB(250, 50, 50))->brighten(30);
+    $this->assertSame(250, $c->hue());
+    $this->assertSame(50, $c->saturation());
+    $this->assertSame(80, $c->brightness());
+  }
+
+  /**
+   * @expectedException Respect\Validation\Exceptions\AllOfException
+   */
+  public function testBrightenOverBounds()
+  {
+    (new \Colourist\HSB(250, 50, 50))->brighten(60);
+  }
+
+  public function testDim()
+  {
+    $c = (new \Colourist\HSB(250, 50, 50))->dim(30);
+    $this->assertSame(250, $c->hue());
+    $this->assertSame(50, $c->saturation());
+    $this->assertSame(20, $c->brightness());
+  }
+
+  /**
+   * @expectedException Respect\Validation\Exceptions\AllOfException
+   */
+  public function testDimUnderBounds()
+  {
+    (new \Colourist\HSB(250, 50, 50))->dim(60);
+  }
+
   /**
    * @expectedException Respect\Validation\Exceptions\AllOfException
    */
