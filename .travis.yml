@@ -12,13 +12,6 @@ script:
 env:
 - TASK="phpunit"
 
-matrix:
-  include:
-  - php: 5.6
-    env: TASK="phpcs"
-  - php: 5.6
-    env: TASK="phpmd"
-
 cache:
   directories:
   - vendor
