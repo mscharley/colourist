@@ -4,29 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fc1be8a6d80fa501ceed3841999757f8",
-    "content-hash": "3575151f8d41a8528bbf69de714bc6af",
+    "hash": "c471976eb3095af559e5b40b3cf39d8f",
+    "content-hash": "3677d5cc7d714822ce04b54acc3f9809",
     "packages": [
         {
             "name": "respect/validation",
-            "version": "0.9.3",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "403b80e92c9ea3a411bba20fb674c8c67a85647b"
+                "reference": "cd4654585524d9ede432a14f9d71fa78fa0c3265"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/403b80e92c9ea3a411bba20fb674c8c67a85647b",
-                "reference": "403b80e92c9ea3a411bba20fb674c8c67a85647b",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/cd4654585524d9ede432a14f9d71fa78fa0c3265",
+                "reference": "cd4654585524d9ede432a14f9d71fa78fa0c3265",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.4"
             },
             "require-dev": {
                 "egulias/email-validator": "~1.2",
                 "malkusch/bav": "~1.0",
+                "mikey179/vfsstream": "^1.5",
                 "phpunit/phpunit": "~4.0",
                 "symfony/validator": "~2.6.9",
                 "zendframework/zend-validator": "~2.3"
@@ -35,6 +36,7 @@
                 "egulias/email-validator": "Strict (RFC compliant) email validation",
                 "ext-bcmath": "Arbitrary Precision Mathematics",
                 "ext-mbstring": "Multibyte String Functions",
+                "fabpot/php-cs-fixer": "Fix PSR2 and other coding style issues",
                 "malkusch/bav": "German bank account validation",
                 "symfony/validator": "Use Symfony validator through Respect\\Validation",
                 "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
@@ -42,7 +44,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "1.0-dev"
                 }
             },
             "autoload": {
@@ -67,7 +69,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2015-06-06 13:06:25"
+            "time": "2015-10-24 03:32:07"
         }
     ],
     "packages-dev": [
