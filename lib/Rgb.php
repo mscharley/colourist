@@ -44,7 +44,7 @@ class Rgb extends Colour
    */
   public function red()
   {
-    return round($this->red);
+    return (int) round($this->red);
   }
 
   /**
@@ -55,7 +55,7 @@ class Rgb extends Colour
    */
   public function green()
   {
-    return round($this->green);
+    return (int) round($this->green);
   }
 
   /**
@@ -66,7 +66,14 @@ class Rgb extends Colour
    */
   public function blue()
   {
-    return round($this->blue);
+    return (int) round($this->blue);
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function toHex() {
+    return '#' . sprintf('%02X%02X%02X', $this->red, $this->green, $this->blue);
   }
 
   /**

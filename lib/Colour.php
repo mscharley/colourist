@@ -34,7 +34,7 @@ abstract class Colour
    */
   public function lighten($amount)
   {
-    $this->toHsl()->lighten($amount);
+    return $this->toHsl()->lighten($amount);
   }
 
   /**
@@ -51,7 +51,16 @@ abstract class Colour
    */
   public function darken($amount)
   {
-    $this->toHsl()->darken($amount);
+    return $this->toHsl()->darken($amount);
+  }
+
+  /**
+   * Convert this colour to an RGB hexcode.
+   *
+   * @return string
+   */
+  public function toHex() {
+    return $this->toRgb()->toHex();
   }
 
   /**
@@ -90,5 +99,15 @@ abstract class Colour
   public function toHsv()
   {
     return $this->toHsv();
+  }
+
+  /**
+   * Convert this colour to a string.
+   *
+   * @return string
+   *   The RGB hexcode for this colour.
+   */
+  public function __toString() {
+    return $this->toHex();
   }
 }
