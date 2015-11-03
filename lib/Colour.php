@@ -30,7 +30,8 @@ abstract class Colour
    * @param float $value
    *   The value to validate.
    */
-  protected static function validatePercentage($value) {
+  protected static function validatePercentage($value)
+  {
     if (!isset(self::$percentage)) {
       self::$percentage = v::numeric()->min(0, TRUE)->max(100, TRUE);
     }

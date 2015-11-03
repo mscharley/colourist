@@ -48,7 +48,8 @@ class Hsb extends SaturatableColour
   /**
    * @inheritDoc
    */
-  public function brighten($amount) {
+  public function brighten($amount)
+  {
     // TODO: Implement brighten() method.
     return $this;
   }
@@ -56,7 +57,8 @@ class Hsb extends SaturatableColour
   /**
    * @inheritDoc
    */
-  public function dim($amount) {
+  public function dim($amount)
+  {
     // TODO: Implement dim() method.
     return $this;
   }
@@ -75,7 +77,8 @@ class Hsb extends SaturatableColour
    * @return Rgb
    *   The RGB transformation of this colour.
    */
-  public function toRgb() {
+  public function toRgb()
+  {
     // TODO: Implement toRgb() method.
   }
 
@@ -85,21 +88,24 @@ class Hsb extends SaturatableColour
    * @return Hsl
    *   The HSL transformation of this colour.
    */
-  public function toHsl() {
+  public function toHsl()
+  {
     // TODO: Implement toHsl() method.
   }
 
   /**
    * @return float
    */
-  public function hue() {
+  public function hue()
+  {
     return (int) round($this->hue);
   }
 
   /**
    * @return float
    */
-  public function brightness() {
+  public function brightness()
+  {
     return (int) round($this->brightness * 100);
   }
 }

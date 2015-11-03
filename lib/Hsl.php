@@ -77,7 +77,8 @@ class Hsl extends SaturatableColour
    * @return Rgb
    *   The RGB transformation of this colour.
    */
-  public function toRgb() {
+  public function toRgb()
+  {
     // TODO: Implement toRgb() method.
   }
 
@@ -87,21 +88,24 @@ class Hsl extends SaturatableColour
    * @return Rgb
    *   The RGB transformation of this colour.
    */
-  public function toHsb() {
+  public function toHsb()
+  {
     // TODO: Implement toHsb() method.
   }
 
   /**
    * @return int
    */
-  public function hue() {
+  public function hue()
+  {
     return (int) round($this->hue);
   }
 
   /**
    * @return int
    */
-  public function lightness() {
+  public function lightness()
+  {
     return (int) round($this->lightness * 100);
   }
 }

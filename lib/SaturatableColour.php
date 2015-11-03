@@ -2,7 +2,8 @@
 
 namespace Colourist;
 
-abstract class SaturatableColour extends Colour {
+abstract class SaturatableColour extends Colour
+{
   /** @var float */
   protected $saturation;
 
@@ -43,7 +44,8 @@ abstract class SaturatableColour extends Colour {
   /**
    * @return int
    */
-  public function saturation() {
+  public function saturation()
+  {
     return (int) round($this->saturation * 100);
   }
 }
