@@ -10,6 +10,8 @@ engines:
     checks:
       CleanCode/StaticAccess:
         enabled: false
+      CleanCode/ElseExpression:
+        enabled: false
   fixme:
     enabled: true
 ratings:
