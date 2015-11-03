@@ -15,7 +15,7 @@
 
 ## Synopsis
 
-`colourist` is a small library for PHP 5.4+ that helps ease working with colours and colour transformations.
+`colourist` is a small library for PHP 5.5+ that helps ease working with colours and colour transformations.
 
 ## Installation
 
