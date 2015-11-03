@@ -137,8 +137,11 @@ class HSL extends SaturatableColour
    */
   public function toHsb()
   {
-    // TODO: Implement toHsb() method.
-    throw new \InvalidArgumentException("Not implemented.");
+    if (!isset($this->hsb)) {
+      $this->hsb = $this->toRgb()->toHsb();
+    }
+
+    return $this->hsb;
   }
 
   /**

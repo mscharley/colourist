@@ -183,7 +183,7 @@ abstract class Colour
    */
   public function toHsv()
   {
-    return $this->toHsv();
+    return $this->toHsb();
   }
 
   /**
