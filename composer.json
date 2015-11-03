@@ -22,6 +22,7 @@
     "phpmd/phpmd": "@stable",
     "phpunit/phpunit": "~4.0",
     "indeyets/pake": "~1.99",
-    "psy/psysh": "@stable"
+    "psy/psysh": "@stable",
+    "codeclimate/php-test-reporter": "dev-master"
   }
 }
