@@ -57,6 +57,40 @@ abstract class Colour
   }
 
   /**
+   * Brighten this colour by a certain amount.
+   *
+   * @param $amount
+   *   A percentage to brighten this colour by.
+   *
+   * @return Colour
+   *   This colour brightened by a given amount.
+   *
+   * @see Colour::dim()
+   * @see Hsb::brighten()
+   */
+  public function brighten($amount)
+  {
+    return $this->toHsb()->brighten($amount);
+  }
+
+  /**
+   * Dim this colour by a certain amount.
+   *
+   * @param $amount
+   *   A percentage to dim this colour by.
+   *
+   * @return Colour
+   *   This colour dimed by a given amount.
+   *
+   * @see Colour::brighten()
+   * @see Hsb::dim()
+   */
+  public function dim($amount)
+  {
+    return $this->toHsb()->dim($amount);
+  }
+
+  /**
    * Convert this colour to an RGB hexcode.
    *
    * @return string
