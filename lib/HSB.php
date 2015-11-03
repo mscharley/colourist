@@ -81,7 +81,25 @@ class HSB extends SaturatableColour
    */
   public function toRgb()
   {
-    // TODO: Implement toRgb() method.
+    $Hd = $this->hue / 60;
+    $m = $this->brightness - $this->chroma;
+    $X = $this->chroma * (1 - abs(fmod($Hd, 2) - 1));
+
+    if ($Hd < 1) {
+      list($red, $green, $blue) = [$this->chroma, $X, 0];
+    } elseif ($Hd < 2) {
+      list($red, $green, $blue) = [$X, $this->chroma, 0];
+    } elseif ($Hd < 3) {
+      list($red, $green, $blue) = [0, $this->chroma, $X];
+    } elseif ($Hd < 4) {
+      list($red, $green, $blue) = [0, $X, $this->chroma];
+    } elseif ($Hd < 5) {
+      list($red, $green, $blue) = [$X, 0, $this->chroma];
+    } else {
+      list($red, $green, $blue) = [$this->chroma, 0, $X];
+    }
+
+    return new RGB(($red + $m) * RGB::MAX_RGB, ($green + $m) * RGB::MAX_RGB, ($blue + $m) * RGB::MAX_RGB);
   }
 
   /**
@@ -93,6 +111,7 @@ class HSB extends SaturatableColour
   public function toHsl()
   {
     // TODO: Implement toHsl() method.
+    throw new \InvalidArgumentException("Not implemented.");
   }
 
   /**

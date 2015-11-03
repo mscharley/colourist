@@ -9,6 +9,7 @@ class ConversionTest extends PHPUnit_Framework_TestCase
       '#52FF9B' => [145, 68, 100],
       '#8219CC' => [275, 88, 80],
       '#FFFFFF' => [0, 0, 100],
+      '#000000' => [0, 0, 0],
     ];
 
     foreach ($tests as $rgb => $values) {
@@ -26,6 +27,7 @@ class ConversionTest extends PHPUnit_Framework_TestCase
       '#19CB97' => [162, 78, 45],
       '#362698' => [248, 60, 37],
       '#FFFFFF' => [0, 0, 100],
+      '#000000' => [0, 0, 0],
     ];
 
     foreach ($tests as $rgb => $values) {
@@ -33,6 +35,38 @@ class ConversionTest extends PHPUnit_Framework_TestCase
       $this->assertSame($values[0], $c->hue());
       $this->assertSame($values[1], $c->saturation());
       $this->assertSame($values[2], $c->lightness());
+    }
+  }
+
+  public function testHsbToRgb()
+  {
+    $tests = [
+      '#FFB638' => [38, 78, 100],
+      '#52FF9A' => [145, 68, 100],
+      '#8118CC' => [275, 88, 80],
+      '#FFFFFF' => [0, 0, 100],
+      '#000000' => [0, 0, 0],
+    ];
+
+    foreach ($tests as $rgb => $values) {
+      $c = (new \Colourist\Hsb($values[0], $values[1], $values[2]))->toRgb();
+      $this->assertSame($rgb, $c->toHex());
+    }
+  }
+
+  public function testHslToRgb()
+  {
+    $tests = [
+      '#FEF886' => [57, 98, 76],
+      '#19CC97' => [162, 78, 45],
+      '#352697' => [248, 60, 37],
+      '#FFFFFF' => [0, 0, 100],
+      '#000000' => [0, 0, 0],
+    ];
+
+    foreach ($tests as $rgb => $values) {
+      $c = (new \Colourist\Hsl($values[0], $values[1], $values[2]))->toRgb();
+      $this->assertSame($rgb, $c->toHex());
     }
   }
 }
