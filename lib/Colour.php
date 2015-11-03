@@ -16,6 +16,44 @@ namespace Colourist;
  */
 abstract class Colour
 {
+  protected $rgb = NULL;
+  protected $hsl = NULL;
+  protected $hsb = NULL;
+
+  /**
+   * Lighten this colour by a certain amount.
+   *
+   * @param $amount
+   *   A percentage to lighten this colour by.
+   *
+   * @return Colour
+   *   This colour lightened by a given amount.
+   *
+   * @see Colour::darken()
+   * @see Hsl::lighten()
+   */
+  public function lighten($amount)
+  {
+    $this->toHsl()->lighten($amount);
+  }
+
+  /**
+   * Darken this colour by a certain amount.
+   *
+   * @param $amount
+   *   A percentage to darken this colour by.
+   *
+   * @return Colour
+   *   This colour darkened by a given amount.
+   *
+   * @see Colour::lighten()
+   * @see Hsl::darken()
+   */
+  public function darken($amount)
+  {
+    $this->toHsl()->darken($amount);
+  }
+
   /**
    * Convert this colour to an RGB colour.
    *
