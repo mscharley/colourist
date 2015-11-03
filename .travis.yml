@@ -15,3 +15,7 @@ env:
 cache:
   directories:
   - vendor
+
+branches:
+  only:
+    - master
