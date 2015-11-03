@@ -14,6 +14,14 @@ class ColourTest extends PHPUnit_Framework_TestCase
   /**
    * @expectedException Respect\Validation\Exceptions\AllOfException
    */
+  public function testFromHexNoHash()
+  {
+    \Colourist\Colour::fromHex('0A141E');
+  }
+
+  /**
+   * @expectedException Respect\Validation\Exceptions\AllOfException
+   */
   public function testFromHexBadCode()
   {
     \Colourist\Colour::fromHex('oops, this is bad');
