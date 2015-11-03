@@ -68,7 +68,8 @@ class HSB extends SaturatableColour
   /**
    * {@inheritdoc}
    */
-  public function saturate($amount) {
+  public function saturate($amount)
+  {
     $this->validatePercentage($amount);
     return new HSB($this->hue(), $this->saturation() + $amount, $this->brightness());
   }
@@ -76,7 +77,8 @@ class HSB extends SaturatableColour
   /**
    * {@inheritdoc}
    */
-  public function desaturate($amount) {
+  public function desaturate($amount)
+  {
     $this->validatePercentage($amount);
     return new HSB($this->hue(), $this->saturation() - $amount, $this->brightness());
   }
@@ -116,7 +118,12 @@ class HSB extends SaturatableColour
         list($red, $green, $blue) = [$this->chroma, 0, $X];
       }
 
-      $this->rgb = new RGB(($red + $m) * RGB::MAX_RGB, ($green + $m) * RGB::MAX_RGB, ($blue + $m) * RGB::MAX_RGB, $this);
+      $this->rgb = new RGB(
+          ($red + $m) * RGB::MAX_RGB,
+          ($green + $m) * RGB::MAX_RGB,
+          ($blue + $m) * RGB::MAX_RGB,
+          $this
+      );
     }
 
     return $this->rgb;

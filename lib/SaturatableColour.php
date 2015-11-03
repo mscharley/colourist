@@ -20,7 +20,7 @@ abstract class SaturatableColour extends Colour
    *
    * @see SaturatableColour::desaturate()
    */
-  public abstract function saturate($amount);
+  abstract public function saturate($amount);
 
   /**
    * Desaturate this colour by a certain amount.
@@ -33,7 +33,7 @@ abstract class SaturatableColour extends Colour
    *
    * @see SaturatableColour::saturate()
    */
-  public abstract function desaturate($amount);
+  abstract public function desaturate($amount);
 
   /**
    * @return int

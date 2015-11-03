@@ -68,7 +68,8 @@ class HSL extends SaturatableColour
   /**
    * {@inheritdoc}
    */
-  public function saturate($amount) {
+  public function saturate($amount)
+  {
     $this->validatePercentage($amount);
     return new HSL($this->hue(), $this->saturation() + $amount, $this->lightness());
   }
@@ -76,7 +77,8 @@ class HSL extends SaturatableColour
   /**
    * {@inheritdoc}
    */
-  public function desaturate($amount) {
+  public function desaturate($amount)
+  {
     $this->validatePercentage($amount);
     return new HSL($this->hue(), $this->saturation() - $amount, $this->lightness());
   }
@@ -104,24 +106,24 @@ class HSL extends SaturatableColour
 
       if ($Hd < 1) {
         list($red, $green, $blue) = [$this->chroma, $X, 0];
-      }
-      elseif ($Hd < 2) {
+      } elseif ($Hd < 2) {
         list($red, $green, $blue) = [$X, $this->chroma, 0];
-      }
-      elseif ($Hd < 3) {
+      } elseif ($Hd < 3) {
         list($red, $green, $blue) = [0, $this->chroma, $X];
-      }
-      elseif ($Hd < 4) {
+      } elseif ($Hd < 4) {
         list($red, $green, $blue) = [0, $X, $this->chroma];
-      }
-      elseif ($Hd < 5) {
+      } elseif ($Hd < 5) {
         list($red, $green, $blue) = [$X, 0, $this->chroma];
-      }
-      else {
+      } else {
         list($red, $green, $blue) = [$this->chroma, 0, $X];
       }
 
-      $this->rgb = new RGB(($red + $m) * RGB::MAX_RGB, ($green + $m) * RGB::MAX_RGB, ($blue + $m) * RGB::MAX_RGB, $this);
+      $this->rgb = new RGB(
+          ($red + $m) * RGB::MAX_RGB,
+          ($green + $m) * RGB::MAX_RGB,
+          ($blue + $m) * RGB::MAX_RGB,
+          $this
+      );
     }
 
     return $this->rgb;

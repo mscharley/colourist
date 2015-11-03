@@ -2,7 +2,8 @@
 
 class ConversionTest extends PHPUnit_Framework_TestCase
 {
-  public function testReversibility() {
+  public function testReversibility()
+  {
     $c = new \Colourist\RGB(10, 20, 30);
     $this->assertSame($c, $c->toHsb()->toRgb());
     $this->assertSame($c, $c->toHsl()->toRgb());
