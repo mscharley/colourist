@@ -5,6 +5,8 @@ engines:
       standard: "phpcs.xml"
   phpmd:
     enabled: true
+    config:
+      rulesets: "cleancode,codesize,controversial,design,unusedcode"
   fixme:
     enabled: true
   duplication:
