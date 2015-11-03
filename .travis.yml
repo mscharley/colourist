@@ -14,6 +14,11 @@ script:
 env:
 - TASK="phpunit"
 
+matrix:
+  allow_failures:
+    - php: 7
+    - php: hhvm
+
 cache:
   directories:
   - vendor
