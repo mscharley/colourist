@@ -7,6 +7,7 @@ engines:
     enabled: true
     config:
       rulesets: "cleancode,codesize,controversial,design,unusedcode"
+      exclude: "tests"
     checks:
       CleanCode/StaticAccess:
         enabled: false
