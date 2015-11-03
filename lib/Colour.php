@@ -142,7 +142,7 @@ abstract class Colour
    */
   public static function fromHex($hex)
   {
-    v::string()->startsWith('#')->hexRgbColor()->assert($hex);
+    v::stringType()->startsWith('#')->hexRgbColor()->assert($hex);
     $red = $green = $blue = 0;
     sscanf($hex, '#%2x%2x%2x', $red, $green, $blue);
     return new RGB($red, $green, $blue);
