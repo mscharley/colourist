@@ -13,6 +13,9 @@ class Rgb extends Colour
   /** @var float */
   protected $blue;
 
+  // MAX_RGB is the maximum number available in two hex digits.
+  const MAX_RGB = 2 ** 8 - 1;
+
   /**
    * Create a new RGB from the given red, green and blue channels.
    *
@@ -27,14 +30,14 @@ class Rgb extends Colour
    */
   public function __construct($red, $green, $blue, Colour $original = NULL)
   {
-    $channel = v::numeric()->numeric()->min(0, TRUE)->max(255, TRUE);
+    $channel = v::numeric()->numeric()->min(0, TRUE)->max(self::MAX_RGB, TRUE);
     $channel->assert($red);
     $channel->assert($green);
     $channel->assert($blue);
 
-    $this->red = $red;
-    $this->green = $green;
-    $this->blue = $blue;
+    $this->red = $red / self::MAX_RGB;
+    $this->green = $green / self::MAX_RGB;
+    $this->blue = $blue / self::MAX_RGB;
 
     $this->rgb = $this;
     if (isset($original)) {
@@ -51,7 +54,7 @@ class Rgb extends Colour
    */
   public function red()
   {
-    return (int) round($this->red);
+    return (int) round($this->red * self::MAX_RGB);
   }
 
   /**
@@ -62,7 +65,7 @@ class Rgb extends Colour
    */
   public function green()
   {
-    return (int) round($this->green);
+    return (int) round($this->green * self::MAX_RGB);
   }
 
   /**
@@ -73,7 +76,7 @@ class Rgb extends Colour
    */
   public function blue()
   {
-    return (int) round($this->blue);
+    return (int) round($this->blue * self::MAX_RGB);
   }
 
   /**
@@ -81,7 +84,7 @@ class Rgb extends Colour
    */
   public function toHex()
   {
-    return '#' . sprintf('%02X%02X%02X', $this->red, $this->green, $this->blue);
+    return '#' . sprintf('%02X%02X%02X', $this->red(), $this->green(), $this->blue());
   }
 
   /**
