@@ -13,6 +13,8 @@ engines:
         enabled: false
       CleanCode/ElseExpression:
         enabled: false
+      Controversial/CamelCaseVariableName:
+        enabled: false
   fixme:
     enabled: true
 ratings:
