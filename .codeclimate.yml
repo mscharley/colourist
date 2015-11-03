@@ -1,7 +1,8 @@
 engines:
   phpcodesniffer:
     enabled: true
-    standard: "phpcs.xml"
+    config:
+      standard: "phpcs.xml"
   phpmd:
     enabled: true
   fixme:
