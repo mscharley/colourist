@@ -5,7 +5,12 @@
   <file>tests</file>
 
   <!-- We use the PSR2 standard as a basis for ours. -->
-  <rule ref="PSR2" />
+  <rule ref="PSR2">
+    <exclude name="Generic.PHP.LowerCaseConstant" />
+  </rule>
+
+  <!-- Include these extra sniffs. -->
+  <rule ref="Generic.PHP.UpperCaseConstant" />
 
   <!-- We use 2 space indents. -->
   <rule ref="Generic.WhiteSpace.ScopeIndent">
