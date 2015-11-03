@@ -6,6 +6,7 @@ php:
 - hhvm
 
 install:
+- rm -r ~/.composer
 - composer self-update
 - composer install
 script:
