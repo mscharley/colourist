@@ -7,6 +7,11 @@ engines:
     enabled: true
   fixme:
     enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - php
 ratings:
   paths:
   - "lib/**.php"
