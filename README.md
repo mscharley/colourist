@@ -5,6 +5,7 @@
 [![Dependency Status](https://gemnasium.com/mscharley/colourist.svg)](https://gemnasium.com/mscharley/colourist)
 
 **Source:** [https://github.com/mscharley/colourist](https://github.com/mscharley/colourist)  
+**Packagist:** [mscharley/colourist](https://packagist.org/packages/mscharley/colourist)  
 **Author:** Matthew Scharley  
 **Contributors:** [See contributors on GitHub][gh-contrib]  
 **Bugs/Support:** [Github Issues][gh-issues]  
