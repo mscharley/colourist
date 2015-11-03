@@ -13,6 +13,10 @@ class Rgb extends Colour
   /** @var float */
   protected $blue;
 
+  protected $M;
+  protected $m;
+  protected $chroma;
+
   // MAX_RGB is the maximum number available in two hex digits.
   const MAX_RGB = 2 ** 8 - 1;
 
@@ -35,9 +39,15 @@ class Rgb extends Colour
     $channel->assert($green);
     $channel->assert($blue);
 
+    // Store normalised values for channels.
     $this->red = $red / self::MAX_RGB;
     $this->green = $green / self::MAX_RGB;
     $this->blue = $blue / self::MAX_RGB;
+
+    // Store some helpful points of interest.
+    $this->M = max($this->red, $this->green, $this->blue);
+    $this->m = min($this->red, $this->green, $this->blue);
+    $this->chroma = $this->M - $this->m;
 
     $this->rgb = $this;
     if (isset($original)) {
@@ -114,6 +124,40 @@ class Rgb extends Colour
    */
   public function toHsb()
   {
-    // TODO: Implement toHsb() method.
+    if (!isset($this->hsb)) {
+      $saturation = $this->chroma === 0 ? 0 : $this->chroma / $this->M;
+      $this->hsb = new Hsb($this->calculateHue(), $saturation * 100, $this->M * 100, $this);
+    }
+
+    return $this->hsb;
+  }
+
+  /**
+   * @todo Consider defining this on Colour.
+   * @return float
+   */
+  public function chroma() {
+    return $this->chroma;
+  }
+
+  /**
+   * @return float
+   */
+  protected function calculateHue() {
+    if ($this->chroma === 0) {
+      return 0;
+    }
+    if ($this->M === $this->red) {
+      $h = fmod(($this->green - $this->blue) / $this->chroma, 6);
+    }
+    elseif ($this->M === $this->green) {
+      $h = 2 + (($this->blue - $this->red) / $this->chroma);
+    }
+    // Blue is the maximum
+    else {
+      $h = 4 + (($this->red - $this->green) / $this->chroma);
+    }
+
+    return 60 * $h;
   }
 }
