@@ -43,7 +43,7 @@ abstract class SaturatableColour extends Colour {
   /**
    * @return int
    */
-  public function getSaturation() {
+  public function saturation() {
     return (int) round($this->saturation * 100);
   }
 }

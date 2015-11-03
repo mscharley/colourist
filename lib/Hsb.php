@@ -27,10 +27,9 @@ class Hsb extends SaturatableColour
    */
   public function __construct($hue, $saturation, $brightness, Colour $original = NULL)
   {
-    $percentage = v::numeric()->min(0, TRUE)->max(100, TRUE);
     v::numeric()->assert($hue);
-    $percentage->assert($saturation);
-    $percentage->assert($brightness);
+    Colour::validatePercentage($saturation);
+    Colour::validatePercentage($brightness);
 
     $this->hue = $hue % 360;
     if ($this->hue < 0) {
@@ -88,5 +87,19 @@ class Hsb extends SaturatableColour
    */
   public function toHsl() {
     // TODO: Implement toHsl() method.
+  }
+
+  /**
+   * @return float
+   */
+  public function hue() {
+    return (int) round($this->hue);
+  }
+
+  /**
+   * @return float
+   */
+  public function brightness() {
+    return (int) round($this->brightness * 100);
   }
 }

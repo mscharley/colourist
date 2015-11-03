@@ -22,6 +22,22 @@ abstract class Colour
   protected $hsl = NULL;
   protected $hsb = NULL;
 
+  private static $percentage;
+
+  /**
+   * Validates that the input is a number and is between 0 and 100 inclusive.
+   *
+   * @param float $value
+   *   The value to validate.
+   */
+  protected static function validatePercentage($value) {
+    if (!isset(self::$percentage)) {
+      self::$percentage = v::numeric()->min(0, TRUE)->max(100, TRUE);
+    }
+
+    self::$percentage->assert($value);
+  }
+
   /**
    * Lighten this colour by a certain amount.
    *
