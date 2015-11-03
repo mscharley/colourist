@@ -31,7 +31,7 @@ class Hsl extends SaturatableColour
     Colour::validatePercentage($saturation);
     Colour::validatePercentage($lightness);
 
-    $this->hue = $hue % 360;
+    $this->hue = fmod($hue, 360);
     if ($this->hue < 0) {
       $this->hue += 360;
     }

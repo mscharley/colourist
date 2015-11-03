@@ -16,4 +16,20 @@ class ConversionTest extends PHPUnit_Framework_TestCase {
       $this->assertSame($values[2], $c->brightness());
     }
   }
+
+  public function testRgbToHsl() {
+    $tests = [
+      '#FEF888' => [57, 98, 76],
+      '#19CB97' => [162, 78, 45],
+      '#362698' => [248, 60, 37],
+      '#FFFFFF' => [0, 0, 100],
+    ];
+
+    foreach ($tests as $rgb => $values) {
+      $c = \Colourist\Colour::fromHex($rgb)->toHsl();
+      $this->assertSame($values[0], $c->hue());
+      $this->assertSame($values[1], $c->saturation());
+      $this->assertSame($values[2], $c->lightness());
+    }
+  }
 }

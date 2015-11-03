@@ -13,12 +13,14 @@ class Rgb extends Colour
   /** @var float */
   protected $blue;
 
+  /** @var float */
   protected $M;
+  /** @var float */
   protected $m;
+  /** @var float */
   protected $chroma;
 
-  // MAX_RGB is the maximum number available in two hex digits.
-  const MAX_RGB = 2 ** 8 - 1;
+  const MAX_RGB = 0xff;
 
   /**
    * Create a new RGB from the given red, green and blue channels.
@@ -113,7 +115,13 @@ class Rgb extends Colour
    */
   public function toHsl()
   {
-    // TODO: Implement toHsl() method.
+    if (!isset($this->hsl)) {
+      $lightness = ($this->M + $this->m) / 2;
+      $saturation = $this->chroma === 0 ? 0 : $this->chroma / (1 - abs(2 * $lightness - 1));
+      $this->hsl = new Hsl($this->calculateHue(), $saturation * 100, $lightness * 100, $this);
+    }
+
+    return $this->hsl;
   }
 
   /**
