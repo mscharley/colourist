@@ -7,7 +7,6 @@ engines:
     enabled: true
     config:
       rulesets: "cleancode,codesize,controversial,design,unusedcode"
-      exclude: "tests"
     checks:
       CleanCode/StaticAccess:
         enabled: false
@@ -19,8 +18,10 @@ engines:
     enabled: true
 ratings:
   paths:
-  - "lib/**.php"
-  - "tests/**.php"
+  - "lib/**/*.php"
+  - "lib/*.php"
+  - "tests/**/*.php"
+  - "tests/*.php"
 exclude_paths:
 - "composer.json"
 - "composer.lock"

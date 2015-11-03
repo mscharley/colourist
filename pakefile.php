@@ -19,7 +19,7 @@ function run_phpcbf() {
 pake_desc('Run PHPMD');
 pake_task('phpmd');
 function run_phpmd() {
-  print pake_sh('vendor/bin/phpmd lib,tests xml cleancode,codesize,controversial,design,unusedcode');
+  print pake_sh('vendor/bin/phpmd ./ text cleancode,codesize,controversial,design,unusedcode --exclude vendor');
 }
 
 pake_desc('Run PHPUnit tests');
