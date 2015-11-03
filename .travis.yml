@@ -16,5 +16,6 @@ cache:
   directories:
   - vendor
 
-whitelist:
-- master
+branches:
+  only:
+    - master
