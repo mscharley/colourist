@@ -88,6 +88,26 @@ abstract class Colour
   }
 
   /**
+   * Determine if this colour is considered 'light'.
+   *
+   * @return bool
+   *   Whether this is a light colour.
+   */
+  public function isLight() {
+    return $this->toRgb()->isLight();
+  }
+
+  /**
+   * Determine if this colour is considered 'dark'.
+   *
+   * @return bool
+   *   Whether this is a dark colour.
+   */
+  public function isDark() {
+    return $this->toRgb()->isDark();
+  }
+
+  /**
    * Brighten this colour by a certain amount.
    *
    * @param $amount

@@ -90,6 +90,34 @@ class RGB extends Colour
   }
 
   /**
+   * Helper to determine the 'darkness' of this colour.
+   *
+   * Low is dark, high is light. 130 is considered the cutover from dark to
+   * light.
+   *
+   * @return float
+   */
+  protected function darknessCoefficient() {
+    return ($this->red() * 299 + $this->green() * 587 + $this->blue() * 114) / 1000;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isLight()
+  {
+    return $this->darknessCoefficient() > 130;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isDark()
+  {
+    return $this->darknessCoefficient() <= 130;
+  }
+
+  /**
    * @inheritDoc
    */
   public function toHex()
