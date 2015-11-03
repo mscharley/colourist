@@ -13,7 +13,8 @@ engines:
     enabled: true
     config:
       languages:
-      - php
+        php:
+          mass_threshold: 20
 ratings:
   paths:
   - "lib/**.php"
