@@ -2,6 +2,8 @@
 
 namespace Colourist;
 
+use Respect\Validation\Validator as v;
+
 class Rgb extends Colour
 {
   /** @var float */
@@ -25,6 +27,11 @@ class Rgb extends Colour
    */
   public function __construct($red, $green, $blue, Colour $original = NULL)
   {
+    $channel = v::numeric()->numeric()->min(0, TRUE)->max(255, TRUE);
+    $channel->assert($red);
+    $channel->assert($green);
+    $channel->assert($blue);
+
     $this->red = $red;
     $this->green = $green;
     $this->blue = $blue;
@@ -72,7 +79,8 @@ class Rgb extends Colour
   /**
    * @inheritDoc
    */
-  public function toHex() {
+  public function toHex()
+  {
     return '#' . sprintf('%02X%02X%02X', $this->red, $this->green, $this->blue);
   }
 

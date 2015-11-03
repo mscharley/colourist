@@ -9,6 +9,8 @@
 
 namespace Colourist;
 
+use Respect\Validation\Validator as v;
+
 /**
  * Class Colour.
  *
@@ -59,8 +61,26 @@ abstract class Colour
    *
    * @return string
    */
-  public function toHex() {
+  public function toHex()
+  {
     return $this->toRgb()->toHex();
+  }
+
+  /**
+   * Convert a hex code to a valid Colour implementation.
+   *
+   * @param $hex
+   *   A hex code starting with '#'.
+   *
+   * @return Colour
+   *   The colour represented by the hex code.
+   */
+  public static function fromHex($hex)
+  {
+    v::string()->startsWith('#')->hexRgbColor()->assert($hex);
+    $red = $green = $blue = 0;
+    sscanf($hex, '#%2x%2x%2x', $red, $green, $blue);
+    return new Rgb($red, $green, $blue);
   }
 
   /**
@@ -107,7 +127,8 @@ abstract class Colour
    * @return string
    *   The RGB hexcode for this colour.
    */
-  public function __toString() {
+  public function __toString()
+  {
     return $this->toHex();
   }
 }
