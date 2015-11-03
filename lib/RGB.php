@@ -144,25 +144,26 @@ class RGB extends Colour
    * @todo Consider defining this on Colour.
    * @return float
    */
-  public function chroma() {
+  public function chroma()
+  {
     return $this->chroma;
   }
 
   /**
    * @return float
    */
-  protected function calculateHue() {
+  protected function calculateHue()
+  {
     if ($this->chroma === 0) {
       return 0;
     }
+
     if ($this->M === $this->red) {
       $h = fmod(($this->green - $this->blue) / $this->chroma, 6);
-    }
-    elseif ($this->M === $this->green) {
+    } elseif ($this->M === $this->green) {
       $h = 2 + (($this->blue - $this->red) / $this->chroma);
-    }
-    // Blue is the maximum
-    else {
+    } else {
+      // Blue is the maximum.
       $h = 4 + (($this->red - $this->green) / $this->chroma);
     }
 

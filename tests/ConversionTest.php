@@ -1,7 +1,9 @@
 <?php
 
-class ConversionTest extends PHPUnit_Framework_TestCase {
-  public function testRgbToHsb() {
+class ConversionTest extends PHPUnit_Framework_TestCase
+{
+  public function testRgbToHsb()
+  {
     $tests = [
       '#FFB638' => [38, 78, 100],
       '#52FF9B' => [145, 68, 100],
@@ -17,7 +19,8 @@ class ConversionTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public function testRgbToHsl() {
+  public function testRgbToHsl()
+  {
     $tests = [
       '#FEF888' => [57, 98, 76],
       '#19CB97' => [162, 78, 45],
