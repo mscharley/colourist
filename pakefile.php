@@ -7,13 +7,13 @@ function run_ci() {}
 pake_desc('Run PHPCS');
 pake_task('phpcs');
 function run_phpcs() {
-  pake_sh('vendor/bin/phpcs lib tests');
+  pake_sh('vendor/bin/phpcs -s');
 }
 
 pake_desc('Run PHPCBF to attempt to fix CS issues');
 pake_task('phpcbf');
 function run_phpcbf() {
-  pake_sh('vendor/bin/phpcbf lib tests');
+  pake_sh('vendor/bin/phpcbf');
 }
 
 pake_desc('Run PHPMD');

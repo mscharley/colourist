@@ -2,11 +2,13 @@
 
 namespace Colourist;
 
-class Hsv extends Colour {
+class Hsb extends Colour
+{
   /**
    * {@inheritdoc}
    */
-  public function toHsv() {
+  public function toHsb()
+  {
     return $this;
   }
 }

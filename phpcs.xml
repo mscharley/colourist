@@ -1,0 +1,21 @@
+<ruleset name="Colourist">
+  <description>The coding standard for Colourist</description>
+
+  <file>lib</file>
+  <file>tests</file>
+
+  <!-- We use the PSR2 standard as a basis for ours. -->
+  <rule ref="PSR2" />
+
+  <!-- We use 2 space indents. -->
+  <rule ref="Generic.WhiteSpace.ScopeIndent">
+    <properties>
+      <property name="indent" value="2" />
+    </properties>
+  </rule>
+
+  <!-- We don't need a namespace for PHPUnit tests -->
+  <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+    <exclude-pattern>/tests/*Test.php</exclude-pattern>
+  </rule>
+</ruleset>
