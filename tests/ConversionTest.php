@@ -2,6 +2,20 @@
 
 class ConversionTest extends PHPUnit_Framework_TestCase
 {
+  public function testReversibility() {
+    $c = new \Colourist\RGB(10, 20, 30);
+    $this->assertSame($c, $c->toHsb()->toRgb());
+    $this->assertSame($c, $c->toHsl()->toRgb());
+
+    $c = new \Colourist\HSL(200, 50, 50);
+    $this->assertSame($c, $c->toRgb()->toHsl());
+    // $this->assertSame($c, $c->toHsb()->toHsl());
+
+    $c = new \Colourist\HSB(200, 50, 50);
+    $this->assertSame($c, $c->toRgb()->toHsb());
+    // $this->assertSame($c, $c->toHsv()->toHsl());
+  }
+
   public function testRgbToHsb()
   {
     $tests = [

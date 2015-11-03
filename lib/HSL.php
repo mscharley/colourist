@@ -81,25 +81,34 @@ class HSL extends SaturatableColour
    */
   public function toRgb()
   {
-    $Hd = $this->hue / 60;
-    $m = $this->lightness - $this->chroma / 2;
-    $X = $this->chroma * (1 - abs(fmod($Hd, 2) - 1));
+    if (!isset($this->rgb)) {
+      $Hd = $this->hue / 60;
+      $m = $this->lightness - $this->chroma / 2;
+      $X = $this->chroma * (1 - abs(fmod($Hd, 2) - 1));
 
-    if ($Hd < 1) {
-      list($red, $green, $blue) = [$this->chroma, $X, 0];
-    } elseif ($Hd < 2) {
-      list($red, $green, $blue) = [$X, $this->chroma, 0];
-    } elseif ($Hd < 3) {
-      list($red, $green, $blue) = [0, $this->chroma, $X];
-    } elseif ($Hd < 4) {
-      list($red, $green, $blue) = [0, $X, $this->chroma];
-    } elseif ($Hd < 5) {
-      list($red, $green, $blue) = [$X, 0, $this->chroma];
-    } else {
-      list($red, $green, $blue) = [$this->chroma, 0, $X];
+      if ($Hd < 1) {
+        list($red, $green, $blue) = [$this->chroma, $X, 0];
+      }
+      elseif ($Hd < 2) {
+        list($red, $green, $blue) = [$X, $this->chroma, 0];
+      }
+      elseif ($Hd < 3) {
+        list($red, $green, $blue) = [0, $this->chroma, $X];
+      }
+      elseif ($Hd < 4) {
+        list($red, $green, $blue) = [0, $X, $this->chroma];
+      }
+      elseif ($Hd < 5) {
+        list($red, $green, $blue) = [$X, 0, $this->chroma];
+      }
+      else {
+        list($red, $green, $blue) = [$this->chroma, 0, $X];
+      }
+
+      $this->rgb = new RGB(($red + $m) * RGB::MAX_RGB, ($green + $m) * RGB::MAX_RGB, ($blue + $m) * RGB::MAX_RGB, $this);
     }
 
-    return new RGB(($red + $m) * RGB::MAX_RGB, ($green + $m) * RGB::MAX_RGB, ($blue + $m) * RGB::MAX_RGB);
+    return $this->rgb;
   }
 
   /**
