@@ -172,7 +172,9 @@ class RGB extends Colour
    */
   protected function calculateHue()
   {
-    if ($this->chroma === 0) {
+    // Chroma could be an integer or a floating point depending on what PHP
+    // decides to do.
+    if ((is_int($this->chroma) || is_float($this->chroma)) && $this->chroma == 0) {
       return 0;
     }
 
