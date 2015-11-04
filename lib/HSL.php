@@ -2,6 +2,7 @@
 
 namespace Colourist;
 
+use Colourist\Exception\SaturationUnsupportedException;
 use Respect\Validation\Validator as v;
 
 class HSL extends SaturatableColour
@@ -71,6 +72,10 @@ class HSL extends SaturatableColour
   public function saturate($amount)
   {
     $this->validatePercentage($amount);
+    if ($this->chroma == 0) {
+      throw new SaturationUnsupportedException('Saturation is unsupported for greyscales.');
+    }
+
     return new HSL($this->hue(), $this->saturation() + $amount, $this->lightness());
   }
 
@@ -80,6 +85,10 @@ class HSL extends SaturatableColour
   public function desaturate($amount)
   {
     $this->validatePercentage($amount);
+    if ($this->chroma == 0) {
+      throw new SaturationUnsupportedException('Saturation is unsupported for greyscales.');
+    }
+
     return new HSL($this->hue(), $this->saturation() - $amount, $this->lightness());
   }
 

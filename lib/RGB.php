@@ -97,7 +97,8 @@ class RGB extends Colour
    *
    * @return float
    */
-  protected function darknessCoefficient() {
+  protected function darknessCoefficient()
+  {
     return ($this->red() * 299 + $this->green() * 587 + $this->blue() * 114) / 1000;
   }
 

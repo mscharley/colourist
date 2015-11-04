@@ -18,6 +18,22 @@ class HslTest extends PHPUnit_Framework_TestCase
     $this->assertSame(30, $c->hue());
   }
 
+  /**
+   * @expectedException Colourist\Exception\SaturationUnsupportedException
+   */
+  public function testSaturateWithNoChroma()
+  {
+    (new \Colourist\HSB(0, 0, 50))->saturate(30);
+  }
+
+  /**
+   * @expectedException Colourist\Exception\SaturationUnsupportedException
+   */
+  public function testDesaturateWithNoChroma()
+  {
+    (new \Colourist\HSB(0, 0, 50))->desaturate(30);
+  }
+
   public function testSaturate()
   {
     $c = (new \Colourist\HSL(250, 50, 50))->saturate(30);

@@ -93,7 +93,8 @@ abstract class Colour
    * @return bool
    *   Whether this is a light colour.
    */
-  public function isLight() {
+  public function isLight()
+  {
     return $this->toRgb()->isLight();
   }
 
@@ -103,7 +104,8 @@ abstract class Colour
    * @return bool
    *   Whether this is a dark colour.
    */
-  public function isDark() {
+  public function isDark()
+  {
     return $this->toRgb()->isDark();
   }
 

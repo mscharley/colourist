@@ -2,8 +2,6 @@
 
 namespace Colourist;
 
-use Respect\Validation\Validator as v;
-
 abstract class SaturatableColour extends Colour
 {
   /** @var float */
