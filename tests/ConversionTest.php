@@ -76,6 +76,7 @@ class ConversionTest extends PHPUnit_Framework_TestCase
       '#FEF886' => [57, 98, 76],
       '#19CC97' => [162, 78, 45],
       '#352697' => [248, 60, 37],
+      '#004057' => [196, 100, 17],
       '#FFFFFF' => [0, 0, 100],
       '#000000' => [0, 0, 0],
     ];
