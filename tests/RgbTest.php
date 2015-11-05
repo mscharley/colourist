@@ -13,7 +13,7 @@ class RgbTest extends PHPUnit_Framework_TestCase
   public function testRounding()
   {
     $colour = new \Colourist\RGB(10.5, 20.3, 29.7);
-    $this->assertSame(11, $colour->red());
+    $this->assertSame(10, $colour->red());
     $this->assertSame(20, $colour->green());
     $this->assertSame(30, $colour->blue());
   }

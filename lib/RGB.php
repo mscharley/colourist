@@ -40,14 +40,14 @@ class RGB extends Colour
     $channel->assert($blue);
 
     // Store normalised values for channels.
-    $this->red = $red / self::MAX_RGB;
-    $this->green = $green / self::MAX_RGB;
-    $this->blue = $blue / self::MAX_RGB;
+    $this->red = bcdiv($red, self::MAX_RGB, self::$bcscale);
+    $this->green = bcdiv($green, self::MAX_RGB, self::$bcscale);
+    $this->blue = bcdiv($blue, self::MAX_RGB, self::$bcscale);
 
     // Store some helpful points of interest.
     $this->M = max($this->red, $this->green, $this->blue);
     $this->m = min($this->red, $this->green, $this->blue);
-    $this->chroma = $this->M - $this->m;
+    $this->chroma = bcsub($this->M, $this->m, self::$bcscale);
 
     $this->rgb = $this;
     if (isset($original)) {
@@ -64,7 +64,7 @@ class RGB extends Colour
    */
   public function red()
   {
-    return (int) round($this->red * self::MAX_RGB);
+    return (int) round(bcmul($this->red, self::MAX_RGB, self::$bcscale));
   }
 
   /**
@@ -75,7 +75,7 @@ class RGB extends Colour
    */
   public function green()
   {
-    return (int) round($this->green * self::MAX_RGB);
+    return (int) round(bcmul($this->green, self::MAX_RGB, self::$bcscale));
   }
 
   /**
@@ -86,7 +86,7 @@ class RGB extends Colour
    */
   public function blue()
   {
-    return (int) round($this->blue * self::MAX_RGB);
+    return (int) round(bcmul($this->blue, self::MAX_RGB, self::$bcscale));
   }
 
   /**
@@ -143,9 +143,9 @@ class RGB extends Colour
   public function toHsl()
   {
     if (!isset($this->hsl)) {
-      $lightness = ($this->M + $this->m) / 2;
-      $saturation = $this->chroma === 0 ? 0 : $this->chroma / (1 - abs(2 * $lightness - 1));
-      $this->hsl = new HSL($this->calculateHue(), $saturation * 100, $lightness * 100, $this);
+      $lightness = bcdiv(bcadd($this->M, $this->m, self::$bcscale), 2, self::$bcscale);
+      $saturation = $this->chroma == 0 ? 0 : bcdiv($this->chroma, bcsub(1, abs(bcsub(bcmul(2, $lightness, self::$bcscale), 1, self::$bcscale)), self::$bcscale), self::$bcscale);
+      $this->hsl = new HSL($this->calculateHue(), bcmul($saturation, 100, self::$bcscale), bcmul($lightness, 100, self::$bcscale), $this);
     }
 
     return $this->hsl;
@@ -160,8 +160,8 @@ class RGB extends Colour
   public function toHsb()
   {
     if (!isset($this->hsb)) {
-      $saturation = $this->chroma === 0 ? 0 : $this->chroma / $this->M;
-      $this->hsb = new HSB($this->calculateHue(), $saturation * 100, $this->M * 100, $this);
+      $saturation = $this->chroma == 0 ? 0 : bcdiv($this->chroma, $this->M, self::$bcscale);
+      $this->hsb = new HSB($this->calculateHue(), bcmul($saturation, 100, self::$bcscale), bcmul($this->M, 100, self::$bcscale), $this);
     }
 
     return $this->hsb;
@@ -174,19 +174,19 @@ class RGB extends Colour
   {
     // Chroma could be an integer or a floating point depending on what PHP
     // decides to do.
-    if ((is_int($this->chroma) || is_float($this->chroma)) && $this->chroma == 0) {
+    if ($this->chroma == 0) {
       return 0;
     }
 
-    if ($this->M === $this->red) {
-      $h = fmod(($this->green - $this->blue) / $this->chroma, 6);
-    } elseif ($this->M === $this->green) {
-      $h = 2 + (($this->blue - $this->red) / $this->chroma);
+    if ($this->M == $this->red) {
+      $h = self::bcfmod(bcdiv(bcsub($this->green, $this->blue, self::$bcscale), $this->chroma, self::$bcscale), 6, self::$bcscale);
+    } elseif ($this->M == $this->green) {
+      $h = bcadd(2, bcdiv(bcsub($this->blue, $this->red, self::$bcscale), $this->chroma, self::$bcscale), self::$bcscale);
     } else {
       // Blue is the maximum.
-      $h = 4 + (($this->red - $this->green) / $this->chroma);
+      $h = bcadd(4, bcdiv(bcsub($this->red, $this->green, self::$bcscale), $this->chroma, self::$bcscale), self::$bcscale);
     }
 
-    return 60 * $h;
+    return bcmul(60, $h, self::$bcscale);
   }
 }

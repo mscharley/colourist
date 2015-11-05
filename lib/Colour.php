@@ -57,7 +57,7 @@ abstract class Colour
    *
    * @see bcmod()
    */
-  public static function bcfmod($left_operand, $modulus, $scale = NULL) {
+  protected static function bcfmod($left_operand, $modulus, $scale = NULL) {
     if (!isset($scale)) {
       $scale = ini_get('bcmath.scale');
     }
