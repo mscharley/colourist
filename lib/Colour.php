@@ -29,6 +29,7 @@ abstract class Colour
   protected $chroma;
 
   private static $percentage;
+  public static $bcscale = 10;
 
   /**
    * Validates that the input is a number and is between 0 and 100 inclusive.
@@ -43,6 +44,26 @@ abstract class Colour
     }
 
     self::$percentage->assert($value);
+  }
+
+  /**
+   * Helper to do floating point modulus with bcmath.
+   *
+   * @param string $left_operand
+   * @param string $modulus
+   * @param int $scale
+   *
+   * @return string
+   *
+   * @see bcmod()
+   */
+  public static function bcfmod($left_operand, $modulus, $scale = NULL) {
+    if (!isset($scale)) {
+      $scale = ini_get('bcmath.scale');
+    }
+
+    $div = bcdiv($left_operand, $modulus, 0);
+    return bcsub($left_operand, bcmul($div, $modulus, $scale), $scale);
   }
 
   /**

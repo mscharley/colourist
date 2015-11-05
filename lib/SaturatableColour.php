@@ -38,6 +38,6 @@ abstract class SaturatableColour extends Colour
    */
   public function saturation()
   {
-    return (int) round($this->saturation * 100);
+    return (int) round(bcmul($this->saturation, 100, self::$bcscale));
   }
 }

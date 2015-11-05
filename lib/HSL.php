@@ -32,14 +32,14 @@ class HSL extends SaturatableColour
     Colour::validatePercentage($saturation);
     Colour::validatePercentage($lightness);
 
-    $this->hue = fmod($hue, 360);
+    $this->hue = self::bcfmod($hue, 360, self::$bcscale);
     if ($this->hue < 0) {
-      $this->hue += 360;
+      $this->hue = bcadd($this->hue, 360, self::$bcscale);
     }
-    $this->saturation = $saturation / 100;
-    $this->lightness = $lightness / 100;
+    $this->saturation = bcdiv($saturation, 100, self::$bcscale);
+    $this->lightness = bcdiv($lightness, 100, self::$bcscale);
 
-    $this->chroma = $this->saturation * (1 - abs(2 * $this->lightness - 1));
+    $this->chroma = bcmul($this->saturation, bcsub(1, abs(bcmul(2, $this->lightness, self::$bcscale) - 1), self::$bcscale), self::$bcscale);
 
     $this->hsl = $this;
     if (isset($original)) {
@@ -109,9 +109,9 @@ class HSL extends SaturatableColour
   public function toRgb()
   {
     if (!isset($this->rgb)) {
-      $Hd = $this->hue / 60;
-      $m = $this->lightness - $this->chroma / 2;
-      $X = $this->chroma * (1 - abs(fmod($Hd, 2) - 1));
+      $Hd = bcdiv($this->hue, 60, self::$bcscale);
+      $m = bcsub($this->lightness, bcdiv($this->chroma, 2, self::$bcscale), self::$bcscale);
+      $X = bcmul($this->chroma, bcsub(1, abs(bcsub(self::bcfmod($Hd, 2, self::$bcscale), 1, self::$bcscale)), self::$bcscale), self::$bcscale);
 
       if ($Hd < 1) {
         list($red, $green, $blue) = [$this->chroma, $X, 0];
@@ -128,9 +128,9 @@ class HSL extends SaturatableColour
       }
 
       $this->rgb = new RGB(
-          ($red + $m) * RGB::MAX_RGB,
-          ($green + $m) * RGB::MAX_RGB,
-          ($blue + $m) * RGB::MAX_RGB,
+          bcmul(bcadd($red, $m, self::$bcscale), RGB::MAX_RGB, self::$bcscale),
+          bcmul(bcadd($green, $m, self::$bcscale), RGB::MAX_RGB, self::$bcscale),
+          bcmul(bcadd($blue, $m, self::$bcscale), RGB::MAX_RGB, self::$bcscale),
           $this
       );
     }
@@ -166,6 +166,6 @@ class HSL extends SaturatableColour
    */
   public function lightness()
   {
-    return (int) round($this->lightness * 100);
+    return (int) round(bcmul($this->lightness, 100, self::$bcscale));
   }
 }
