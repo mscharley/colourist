@@ -44,7 +44,7 @@ abstract class Colour
     }
 
     if (is_numeric($value)) {
-      $value = round($value, self::$bcscale);
+      $value = round($value, 3);
     }
 
     self::$percentage->assert($value);
