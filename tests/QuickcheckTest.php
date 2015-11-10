@@ -4,6 +4,8 @@ use QCheck\Generator as Gen;
 use QCheck\Quick;
 
 class QuickcheckTest extends PHPUnit_Framework_TestCase {
+  const RUN_COUNT = 5000;
+
   public function testRgbToHsb() {
     $r = Gen::choose(0, 255);
     $g = Gen::choose(0, 255);
@@ -13,7 +15,7 @@ class QuickcheckTest extends PHPUnit_Framework_TestCase {
       return true;
     });
 
-    $check = Quick::check(500, $gen);
+    $check = Quick::check(self::RUN_COUNT, $gen);
     if ($check['result']) {
       $this->assertTrue($check['result'], "This should never happen!");
     }
@@ -32,7 +34,7 @@ class QuickcheckTest extends PHPUnit_Framework_TestCase {
       return true;
     });
 
-    $check = Quick::check(500, $gen);
+    $check = Quick::check(self::RUN_COUNT, $gen);
     if ($check['result']) {
       $this->assertTrue($check['result'], "This should never happen!");
     }
@@ -51,7 +53,7 @@ class QuickcheckTest extends PHPUnit_Framework_TestCase {
       return true;
     });
 
-    $check = Quick::check(500, $gen);
+    $check = Quick::check(self::RUN_COUNT, $gen);
     if ($check['result']) {
       $this->assertTrue($check['result'], "This should never happen!");
     }
@@ -70,7 +72,7 @@ class QuickcheckTest extends PHPUnit_Framework_TestCase {
       return true;
     });
 
-    $check = Quick::check(500, $gen);
+    $check = Quick::check(self::RUN_COUNT, $gen);
     if ($check['result']) {
       $this->assertTrue($check['result'], "This should never happen!");
     }
