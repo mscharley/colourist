@@ -22,6 +22,7 @@
     "squizlabs/php_codesniffer": "@stable",
     "phpmd/phpmd": "@stable",
     "phpunit/phpunit": "~4.0",
+    "steos/php-quickcheck": "dev-master",
     "indeyets/pake": "~1.99",
     "psy/psysh": "@stable",
     "codeclimate/php-test-reporter": "dev-master"
