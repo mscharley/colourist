@@ -13,6 +13,11 @@
       "Colourist\\": "lib"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Colourist\\Tests\\": "tests/lib"
+    }
+  },
   "require": {
     "php": ">= 5.5",
     "ext-bcmath": "*",

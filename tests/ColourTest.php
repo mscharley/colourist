@@ -12,7 +12,7 @@ class ColourTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testFromHexNoHash()
   {
@@ -20,7 +20,7 @@ class ColourTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testFromHexBadCode()
   {

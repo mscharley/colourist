@@ -25,7 +25,7 @@ class HslTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Colourist\Exception\SaturationUnsupportedException
+   * @expectedException \Colourist\Exception\SaturationUnsupportedException
    */
   public function testSaturateWithNoChroma()
   {
@@ -33,7 +33,7 @@ class HslTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Colourist\Exception\SaturationUnsupportedException
+   * @expectedException \Colourist\Exception\SaturationUnsupportedException
    */
   public function testDesaturateWithNoChroma()
   {
@@ -49,7 +49,7 @@ class HslTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testSaturateOverBounds()
   {
@@ -65,7 +65,7 @@ class HslTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testDesaturateUnderBounds()
   {
@@ -81,7 +81,7 @@ class HslTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testLightenOverBounds()
   {
@@ -97,7 +97,7 @@ class HslTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testDarkenUnderBounds()
   {
@@ -105,7 +105,7 @@ class HslTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testSaturationOverBounds()
   {
@@ -113,7 +113,7 @@ class HslTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testSaturationUnderBounds()
   {
@@ -121,7 +121,7 @@ class HslTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testLightnessOverBounds()
   {
@@ -129,7 +129,7 @@ class HslTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testLightnessUnderBounds()
   {

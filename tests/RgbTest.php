@@ -25,7 +25,7 @@ class RgbTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testInvalidRedUnderBounds()
   {
@@ -33,7 +33,7 @@ class RgbTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testInvalidRedOverBounds()
   {
@@ -41,7 +41,7 @@ class RgbTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testInvalidGreenUnderBounds()
   {
@@ -49,7 +49,7 @@ class RgbTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testInvalidGreenOverBounds()
   {
@@ -57,7 +57,7 @@ class RgbTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testInvalidBlueUnderBounds()
   {
@@ -65,7 +65,7 @@ class RgbTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @expectedException Respect\Validation\Exceptions\AllOfException
+   * @expectedException \Respect\Validation\Exceptions\AllOfException
    */
   public function testInvalidBlueOverBounds()
   {
