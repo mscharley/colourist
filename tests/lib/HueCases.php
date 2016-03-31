@@ -3,8 +3,8 @@
 namespace Colourist\Tests;
 
 trait HueCases {
-  abstract function assertSame($expected, $actual, $message = '');
-  abstract function newTestedClass(...$args);
+  abstract public function assertSame($expected, $actual, $message = '');
+  abstract public function newTestedClass(...$args);
 
   public function testHueWrapping()
   {

@@ -9,8 +9,14 @@ class RgbTest extends ColourTestCase
     return "\\Colourist\\RGB";
   }
 
+  protected function properties()
+  {
+    return ['red', 'green', 'blue'];
+  }
+
   public function testGetters()
   {
+    /** @var \Colourist\RGB $colour */
     $colour = $this->newTestedClass(10, 20, 30);
     $this->assertSame(10, $colour->red());
     $this->assertSame(20, $colour->green());
@@ -19,6 +25,7 @@ class RgbTest extends ColourTestCase
 
   public function testRounding()
   {
+    /** @var \Colourist\RGB $colour */
     $colour = $this->newTestedClass(10.5, 20.3, 29.7);
     $this->assertSame(10, $colour->red());
     $this->assertSame(20, $colour->green());

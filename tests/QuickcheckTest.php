@@ -19,7 +19,7 @@ class QuickcheckTest extends PHPUnit_Framework_TestCase
 
     $check = Quick::check(self::RUN_COUNT, $gen);
     if ($check['result']) {
-      $this->assertTrue($check['result'], "This should never happen!");
+      $this->assertTrue($check['result']);
     } else {
       $failed = new \Colourist\RGB($check['fail'][0], $check['fail'][1], $check['fail'][2]);
       $this->assertTrue($check['result'], "Unable to generate HSB colour for " . $failed->toHex());
@@ -38,7 +38,7 @@ class QuickcheckTest extends PHPUnit_Framework_TestCase
 
     $check = Quick::check(self::RUN_COUNT, $gen);
     if ($check['result']) {
-      $this->assertTrue($check['result'], "This should never happen!");
+      $this->assertTrue($check['result']);
     } else {
       $failed = new \Colourist\RGB($check['fail'][0], $check['fail'][1], $check['fail'][2]);
       $this->assertTrue($check['result'], "Unable to generate HSL colour for " . $failed->toHex());
@@ -57,7 +57,7 @@ class QuickcheckTest extends PHPUnit_Framework_TestCase
 
     $check = Quick::check(self::RUN_COUNT, $gen);
     if ($check['result']) {
-      $this->assertTrue($check['result'], "This should never happen!");
+      $this->assertTrue($check['result']);
     } else {
       $failed = new \Colourist\HSB($check['fail'][0], $check['fail'][1], $check['fail'][2]);
       $this->assertTrue($check['result'], "Unable to generate RGB colour for " . $failed->inspect());
@@ -76,7 +76,7 @@ class QuickcheckTest extends PHPUnit_Framework_TestCase
 
     $check = Quick::check(self::RUN_COUNT, $gen);
     if ($check['result']) {
-      $this->assertTrue($check['result'], "This should never happen!");
+      $this->assertTrue($check['result']);
     } else {
       $failed = new \Colourist\HSL($check['fail'][0], $check['fail'][1], $check['fail'][2]);
       $this->assertTrue($check['result'], "Unable to generate RGB colour for " . $failed->inspect());

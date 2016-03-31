@@ -4,7 +4,17 @@ namespace Colourist\Tests;
 
 abstract class ColourTestCase extends \PHPUnit_Framework_TestCase
 {
+  /**
+   * @return string
+   *   The name of the class that this TestCase is testing.
+   */
   abstract protected function classToTest();
+
+  /**
+   * @return string[]
+   *   A list of strings representing properties of the class to test.
+   */
+  abstract protected function properties();
 
   /**
    * @param array $args
@@ -19,5 +29,31 @@ abstract class ColourTestCase extends \PHPUnit_Framework_TestCase
   {
     $class = $this->classToTest();
     return new $class(...$args);
+  }
+
+  /**
+   * @param object $expected
+   *   Expected properties.
+   * @param object $actual
+   *   Actual properties.
+   * @param array $except
+   *   Properties to ignore in comparison.
+   * @param string $message
+   *   Message to display if properties don't match.
+   */
+  public function assertPropertiesSame($expected, $actual, $except = [], $message = '') {
+    $expected_properties = [];
+    $actual_properties = [];
+
+    foreach ($this->properties() as $property) {
+      if (in_array($property, $except)) {
+        continue;
+      }
+
+      $expected_properties[$property] = $expected->$property();
+      $actual_properties[$property] = $actual->$property();
+    }
+
+    $this->assertSame($expected_properties, $actual_properties, $message);
   }
 }
