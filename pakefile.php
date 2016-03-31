@@ -27,7 +27,18 @@ pake_task('phpunit');
 function run_phpunit() {
   $cc_token = getenv('CODECLIMATE_REPO_TOKEN');
   $cc = !empty($cc_token);
-  print pake_sh('vendor/bin/phpunit' . ($cc ? ' --coverage-clover build/logs/clover.xml' : ''));
+  $clover = $cc ? ' --coverage-clover build/logs/clover.xml' : '';
+
+  $circle_test_reports = getenv('CIRCLE_TEST_REPORTS');
+  if (!empty($circle_test_reports)) {
+    pake_mkdirs($circle_test_reports);
+    $junit = " --log-junit $circle_test_reports/phpunit/junit.xml";
+  } else {
+    $junit = '';
+  }
+
+  print pake_sh('vendor/bin/phpunit' . $clover . $junit);
+
   if ($cc && file_exists('build/logs/clover.xml')) {
     print pake_sh('vendor/bin/test-reporter');
   }
