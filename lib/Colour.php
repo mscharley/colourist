@@ -61,7 +61,8 @@ abstract class Colour
    *
    * @see bcmod()
    */
-  protected static function bcfmod($left_operand, $modulus, $scale = NULL) {
+  protected static function bcfmod($left_operand, $modulus, $scale = NULL)
+  {
     if (!isset($scale)) {
       $scale = ini_get('bcmath.scale');
     }
@@ -87,7 +88,8 @@ abstract class Colour
    * @return Colour
    *   This colour with hue adjusted by a given amount.
    */
-  public function rotateHue($amount) {
+  public function rotateHue($amount)
+  {
     return $this->toHsl()->rotateHue($amount);
   }
 
@@ -245,6 +247,12 @@ abstract class Colour
   {
     return $this->toHsb();
   }
+
+  /**
+   * @return string
+   *   A string representing the technical version of this colour, including class.
+   */
+  abstract public function inspect();
 
   /**
    * Convert this colour to a string.

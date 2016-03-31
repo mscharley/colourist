@@ -51,7 +51,8 @@ class HSB extends SaturatableColour
   /**
    * @inheritdoc
    */
-  public function rotateHue($amount) {
+  public function rotateHue($amount)
+  {
     return new HSB($this->hue() + $amount, $this->saturation(), $this->brightness());
   }
 
@@ -118,7 +119,11 @@ class HSB extends SaturatableColour
     if (!isset($this->rgb)) {
       $Hd = bcdiv($this->hue, 60, self::$bcscale);
       $m = bcsub($this->brightness, $this->chroma, self::$bcscale);
-      $X = bcmul($this->chroma, bcsub(1, abs(bcsub(self::bcfmod($Hd, 2, self::$bcscale), 1, self::$bcscale)), self::$bcscale), self::$bcscale);
+      $X = bcmul(
+          $this->chroma,
+          bcsub(1, abs(bcsub(self::bcfmod($Hd, 2, self::$bcscale), 1, self::$bcscale)), self::$bcscale),
+          self::$bcscale
+      );
 
       if ($Hd < 1) {
         list($red, $green, $blue) = [$this->chroma, $X, 0];
@@ -174,5 +179,13 @@ class HSB extends SaturatableColour
   public function brightness()
   {
     return (int) round(bcmul($this->brightness, 100, self::$bcscale));
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public function inspect()
+  {
+    return "HSB(" . $this->hue() . ", " . $this->saturation() . ", " . $this->brightness() . ")";
   }
 }
