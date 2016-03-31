@@ -151,15 +151,34 @@ class HSB extends SaturatableColour
   }
 
   /**
-   * Convert this colour to an HSL colour.
-   *
-   * @return HSL
-   *   The HSL transformation of this colour.
+   * {@inheritdoc}
    */
   public function toHsl()
   {
     if (!isset($this->hsl)) {
-      $this->hsl = $this->toRgb()->toHsl();
+      if ($this->saturation == 0 || $this->saturation == 1 || $this->brightness == 0 || $this->brightness == 1) {
+        // Division by 0 issues if we use the below formula.
+        $this->hsl = $this->toRgb()->toHsl();
+      } else {
+        $lightness = bcmul(
+            bcmul(0.5, $this->brightness, self::$bcscale),
+            bcsub(2, $this->saturation, self::$bcscale),
+            self::$bcscale
+        );
+
+        $saturation = bcdiv(
+            bcmul($this->brightness, $this->saturation, self::$bcscale),
+            bcsub(1, abs(bcsub(bcmul(2, $lightness, self::$bcscale), 1, self::$bcscale)), self::$bcscale),
+            self::$bcscale
+        );
+
+        $this->hsl = new HSL(
+            $this->hue(),
+            bcmul($saturation, 100, self::$bcscale),
+            bcmul($lightness, 100, self::$bcscale),
+            $this
+        );
+      }
     }
 
     return $this->hsl;
