@@ -19,14 +19,6 @@ class HsbTest extends ColourTestCase
     return ['hue', 'saturation', 'brightness'];
   }
 
-  public function testGetters()
-  {
-    $c = $this->newTestedClass(250, 40, 60);
-    $this->assertSame(250, $c->hue());
-    $this->assertSame(40, $c->saturation());
-    $this->assertSame(60, $c->brightness());
-  }
-
   public function testBrighten()
   {
     $c = $this->newTestedClass(250, 50, 50)->brighten(30);

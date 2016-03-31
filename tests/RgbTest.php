@@ -14,15 +14,6 @@ class RgbTest extends ColourTestCase
     return ['red', 'green', 'blue'];
   }
 
-  public function testGetters()
-  {
-    /** @var \Colourist\RGB $colour */
-    $colour = $this->newTestedClass(10, 20, 30);
-    $this->assertSame(10, $colour->red());
-    $this->assertSame(20, $colour->green());
-    $this->assertSame(30, $colour->blue());
-  }
-
   public function testRounding()
   {
     /** @var \Colourist\RGB $colour */

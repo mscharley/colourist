@@ -56,4 +56,21 @@ abstract class ColourTestCase extends \PHPUnit_Framework_TestCase
 
     $this->assertSame($expected_properties, $actual_properties, $message);
   }
+
+  public function testGetters()
+  {
+    $i = 10;
+    $properties = array_map(function ($property) use ($i) {
+      $i += 10;
+      return $i;
+    }, $this->properties());
+
+    $c = $this->newTestedClass(...$properties);
+
+    $i = 0;
+    foreach ($this->properties() as $property) {
+      $this->assertSame($properties[$i], $c->$property());
+      $i++;
+    }
+  }
 }

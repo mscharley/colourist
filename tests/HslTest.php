@@ -19,15 +19,6 @@ class HslTest extends ColourTestCase
     return ['hue', 'saturation', 'lightness'];
   }
 
-  public function testGetters()
-  {
-    /** @var \Colourist\HSL $c */
-    $c = $this->newTestedClass(250, 40, 60);
-    $this->assertSame(250, $c->hue());
-    $this->assertSame(40, $c->saturation());
-    $this->assertSame(60, $c->lightness());
-  }
-
   public function testLighten()
   {
     $c = $this->newTestedClass(250, 50, 50)->lighten(30);
