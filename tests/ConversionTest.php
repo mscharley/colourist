@@ -86,4 +86,38 @@ class ConversionTest extends PHPUnit_Framework_TestCase
       $this->assertSame($rgb, $c->toHex());
     }
   }
+
+  public function testHslToHsb()
+  {
+    $tests = [
+      [[0, 0, 100], [0, 0, 100]],
+      [[0, 0, 0], [0, 0, 0]],
+      [[57, 98, 76], [57, 47, 100]],
+      [[162, 78, 45], [162, 88, 80]],
+      [[248, 60, 37], [248, 75, 59]],
+      [[196, 100, 17], [196, 100, 34]],
+    ];
+
+    foreach ($tests as list($hsl, $hsb)) {
+      $c = (new \Colourist\Hsl($hsl[0], $hsl[1], $hsl[2]))->toHsb();
+      $this->assertSame("HSB($hsb[0], $hsb[1], $hsb[2])", $c->inspect());
+    }
+  }
+
+  public function testHsbToHsl()
+  {
+    $tests = [
+        [[0, 0, 100], [0, 0, 100]],
+        [[0, 0, 0], [0, 0, 0]],
+        [[57, 47, 100], [57, 100, 77]],
+        [[162, 88, 80], [162, 79, 45]],
+        [[248, 75, 59], [248, 60, 37]],
+        [[196, 100, 34], [196, 100, 17]],
+    ];
+
+    foreach ($tests as list($hsl, $hsb)) {
+      $c = (new \Colourist\Hsb($hsl[0], $hsl[1], $hsl[2]))->toHsl();
+      $this->assertSame("HSL($hsb[0], $hsb[1], $hsb[2])", $c->inspect());
+    }
+  }
 }
