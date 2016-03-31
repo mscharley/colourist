@@ -41,7 +41,8 @@ abstract class ColourTestCase extends \PHPUnit_Framework_TestCase
    * @param string $message
    *   Message to display if properties don't match.
    */
-  public function assertPropertiesSame($expected, $actual, $except = [], $message = '') {
+  public function assertPropertiesSame($expected, $actual, $except = [], $message = '')
+  {
     $expected_properties = [];
     $actual_properties = [];
 

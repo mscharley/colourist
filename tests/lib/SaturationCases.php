@@ -2,7 +2,8 @@
 
 namespace Colourist\Tests;
 
-trait SaturationCases {
+trait SaturationCases
+{
   abstract public function assertSame($expected, $actual, $message = '');
   abstract public function newTestedClass(...$args);
   abstract public function assertPropertiesSame($expected, $actual, $except = [], $message = '');

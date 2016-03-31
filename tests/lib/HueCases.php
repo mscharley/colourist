@@ -2,7 +2,8 @@
 
 namespace Colourist\Tests;
 
-trait HueCases {
+trait HueCases
+{
   abstract public function assertSame($expected, $actual, $message = '');
   abstract public function newTestedClass(...$args);
 
