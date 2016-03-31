@@ -144,8 +144,17 @@ class RGB extends Colour
   {
     if (!isset($this->hsl)) {
       $lightness = bcdiv(bcadd($this->M, $this->m, self::$bcscale), 2, self::$bcscale);
-      $saturation = $this->chroma == 0 ? 0 : bcdiv($this->chroma, bcsub(1, abs(bcsub(bcmul(2, $lightness, self::$bcscale), 1, self::$bcscale)), self::$bcscale), self::$bcscale);
-      $this->hsl = new HSL($this->calculateHue(), bcmul($saturation, 100, self::$bcscale), bcmul($lightness, 100, self::$bcscale), $this);
+      $saturation = $this->chroma == 0 ? 0 : bcdiv(
+          $this->chroma,
+          bcsub(1, abs(bcsub(bcmul(2, $lightness, self::$bcscale), 1, self::$bcscale)), self::$bcscale),
+          self::$bcscale
+      );
+      $this->hsl = new HSL(
+          $this->calculateHue(),
+          bcmul($saturation, 100, self::$bcscale),
+          bcmul($lightness, 100, self::$bcscale),
+          $this
+      );
     }
 
     return $this->hsl;
@@ -161,7 +170,12 @@ class RGB extends Colour
   {
     if (!isset($this->hsb)) {
       $saturation = $this->chroma == 0 ? 0 : bcdiv($this->chroma, $this->M, self::$bcscale);
-      $this->hsb = new HSB($this->calculateHue(), bcmul($saturation, 100, self::$bcscale), bcmul($this->M, 100, self::$bcscale), $this);
+      $this->hsb = new HSB(
+          $this->calculateHue(),
+          bcmul($saturation, 100, self::$bcscale),
+          bcmul($this->M, 100, self::$bcscale),
+          $this
+      );
     }
 
     return $this->hsb;
@@ -179,14 +193,34 @@ class RGB extends Colour
     }
 
     if ($this->M == $this->red) {
-      $h = self::bcfmod(bcdiv(bcsub($this->green, $this->blue, self::$bcscale), $this->chroma, self::$bcscale), 6, self::$bcscale);
+      $h = self::bcfmod(
+          bcdiv(bcsub($this->green, $this->blue, self::$bcscale), $this->chroma, self::$bcscale),
+          6,
+          self::$bcscale
+      );
     } elseif ($this->M == $this->green) {
-      $h = bcadd(2, bcdiv(bcsub($this->blue, $this->red, self::$bcscale), $this->chroma, self::$bcscale), self::$bcscale);
+      $h = bcadd(
+          2,
+          bcdiv(bcsub($this->blue, $this->red, self::$bcscale), $this->chroma, self::$bcscale),
+          self::$bcscale
+      );
     } else {
       // Blue is the maximum.
-      $h = bcadd(4, bcdiv(bcsub($this->red, $this->green, self::$bcscale), $this->chroma, self::$bcscale), self::$bcscale);
+      $h = bcadd(
+          4,
+          bcdiv(bcsub($this->red, $this->green, self::$bcscale), $this->chroma, self::$bcscale),
+          self::$bcscale
+      );
     }
 
     return bcmul(60, $h, self::$bcscale);
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public function inspect()
+  {
+    return "RGB(" . $this->red() . ", " . $this->green() . ", " . $this->blue() . ")";
   }
 }

@@ -39,13 +39,25 @@ class HSL extends SaturatableColour
     $this->saturation = bcdiv($saturation, 100, self::$bcscale);
     $this->lightness = bcdiv($lightness, 100, self::$bcscale);
 
-    $this->chroma = bcmul($this->saturation, bcsub(1, abs(bcmul(2, $this->lightness, self::$bcscale) - 1), self::$bcscale), self::$bcscale);
+    $this->chroma = bcmul(
+        $this->saturation,
+        bcsub(1, abs(bcmul(2, $this->lightness, self::$bcscale) - 1), self::$bcscale),
+        self::$bcscale
+    );
 
     $this->hsl = $this;
     if (isset($original)) {
       $this->rgb = $original->rgb;
       $this->hsb = $original->hsb;
     }
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public function rotateHue($amount)
+  {
+    return new HSL($this->hue() + $amount, $this->saturation(), $this->lightness());
   }
 
   /**
@@ -111,7 +123,11 @@ class HSL extends SaturatableColour
     if (!isset($this->rgb)) {
       $Hd = bcdiv($this->hue, 60, self::$bcscale);
       $m = bcsub($this->lightness, bcdiv($this->chroma, 2, self::$bcscale), self::$bcscale);
-      $X = bcmul($this->chroma, bcsub(1, abs(bcsub(self::bcfmod($Hd, 2, self::$bcscale), 1, self::$bcscale)), self::$bcscale), self::$bcscale);
+      $X = bcmul(
+          $this->chroma,
+          bcsub(1, abs(bcsub(self::bcfmod($Hd, 2, self::$bcscale), 1, self::$bcscale)), self::$bcscale),
+          self::$bcscale
+      );
 
       if ($Hd < 1) {
         list($red, $green, $blue) = [$this->chroma, $X, 0];
@@ -167,5 +183,13 @@ class HSL extends SaturatableColour
   public function lightness()
   {
     return (int) round(bcmul($this->lightness, 100, self::$bcscale));
+  }
+
+  /**
+   * @inheritdoc
+   */
+  public function inspect()
+  {
+    return "HSL(" . $this->hue() . ", " . $this->saturation() . ", " . $this->lightness() . ")";
   }
 }
