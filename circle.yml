@@ -5,6 +5,8 @@ machine:
 dependencies:
   cache_directories:
     - "vendor"
+  pre:
+    - pecl install xdebug
 
 test:
   override:
