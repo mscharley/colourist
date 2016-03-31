@@ -79,9 +79,22 @@ abstract class Colour
   }
 
   /**
+   * Adjust hue of the current colour by a certain amount.
+   *
+   * @param int $amount
+   *   A hue value to add to the current colours hue.
+   *
+   * @return Colour
+   *   This colour with hue adjusted by a given amount.
+   */
+  public function rotateHue($amount) {
+    return $this->toHsl()->rotateHue($amount);
+  }
+
+  /**
    * Lighten this colour by a certain amount.
    *
-   * @param $amount
+   * @param int $amount
    *   A percentage to lighten this colour by.
    *
    * @return Colour
@@ -98,7 +111,7 @@ abstract class Colour
   /**
    * Darken this colour by a certain amount.
    *
-   * @param $amount
+   * @param int $amount
    *   A percentage to darken this colour by.
    *
    * @return Colour
@@ -137,7 +150,7 @@ abstract class Colour
   /**
    * Brighten this colour by a certain amount.
    *
-   * @param $amount
+   * @param int $amount
    *   A percentage to brighten this colour by.
    *
    * @return Colour
@@ -154,7 +167,7 @@ abstract class Colour
   /**
    * Dim this colour by a certain amount.
    *
-   * @param $amount
+   * @param int $amount
    *   A percentage to dim this colour by.
    *
    * @return Colour
@@ -181,7 +194,7 @@ abstract class Colour
   /**
    * Convert a hex code to a valid Colour implementation.
    *
-   * @param $hex
+   * @param string $hex
    *   A hex code starting with '#'.
    *
    * @return Colour
@@ -223,7 +236,7 @@ abstract class Colour
    * Alias for toHsb().
    *
    * HSV and HSB are the same thing but both names are in wide use, so we
-   * provide both
+   * provide both.
    *
    * @return HSB
    *   The HSB version of this colour.

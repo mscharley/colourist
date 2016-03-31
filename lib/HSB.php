@@ -49,6 +49,13 @@ class HSB extends SaturatableColour
   }
 
   /**
+   * @inheritdoc
+   */
+  public function rotateHue($amount) {
+    return new HSB($this->hue() + $amount, $this->saturation(), $this->brightness());
+  }
+
+  /**
    * @inheritDoc
    */
   public function brighten($amount)

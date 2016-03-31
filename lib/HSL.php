@@ -49,6 +49,13 @@ class HSL extends SaturatableColour
   }
 
   /**
+   * @inheritdoc
+   */
+  public function rotateHue($amount) {
+    return new HSL($this->hue() + $amount, $this->saturation(), $this->lightness());
+  }
+
+  /**
    * @inheritDoc
    */
   public function lighten($amount)
