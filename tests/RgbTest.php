@@ -1,6 +1,8 @@
 <?php
 
-class RgbTest extends \Colourist\Tests\ColourTestCase
+use Colourist\Tests\ColourTestCase;
+
+class RgbTest extends ColourTestCase
 {
   protected function classToTest()
   {

@@ -1,7 +1,12 @@
 <?php
 
-class HsbTest extends \Colourist\Tests\ColourTestCase
+use Colourist\Tests\ColourTestCase;
+use Colourist\Tests\HueCases;
+
+class HsbTest extends ColourTestCase
 {
+  use HueCases;
+
   protected function classToTest()
   {
     return "\\Colourist\\HSB";
@@ -13,20 +18,6 @@ class HsbTest extends \Colourist\Tests\ColourTestCase
     $this->assertSame(250, $c->hue());
     $this->assertSame(40, $c->saturation());
     $this->assertSame(60, $c->brightness());
-  }
-
-  public function testHueWrapping()
-  {
-    $c = $this->newTestedClass(390, 40, 60);
-    $this->assertSame(30, $c->hue());
-    $c = $this->newTestedClass(-330, 40, 60);
-    $this->assertSame(30, $c->hue());
-  }
-
-  public function testRotateHue()
-  {
-    $c = $this->newTestedClass(50, 40, 20);
-    $this->assertSame(70, $c->rotateHue(20)->hue());
   }
 
   /**
