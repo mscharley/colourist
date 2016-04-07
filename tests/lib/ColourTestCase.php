@@ -74,4 +74,13 @@ abstract class ColourTestCase extends \PHPUnit_Framework_TestCase
       $i++;
     }
   }
+
+  public function testEquals()
+  {
+    $colour = $this->newTestedClass(211, 90, 61);
+    $other = $this->newTestedClass(211, 90, 61);
+    $other_diff = $this->newTestedClass(211, 90, 63);
+    $this->assertTrue($colour->equals($other));
+    $this->assertFalse($colour->equals($other_diff));
+  }
 }
