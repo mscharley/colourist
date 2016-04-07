@@ -235,13 +235,16 @@ abstract class Colour
   abstract public function toHsb();
 
   /**
-   * Check this colour is the same with other colour.
+   * Check equality of two different Colour's.
+   *
+   * This is necessary as PHP's == can cause stack overflows when used 
+   * with self-referential objects like Colours.
    *
    * @param Colour $other
    *   The other colour that is going to be compared.
    *
    * @return bool
-   *   The colour is equal.
+   *   Whether the colour is equal.
    */
   abstract public function equals(Colour $other);
 
