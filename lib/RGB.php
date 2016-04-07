@@ -223,4 +223,16 @@ class RGB extends Colour
   {
     return "RGB(" . $this->red() . ", " . $this->green() . ", " . $this->blue() . ")";
   }
+
+  /**
+   * @inheritdoc
+   */
+  public function equals(Colour $other)
+  {
+    $other = $other->toRgb();
+
+    return $this->red() == $other->red() &&
+      $this->blue() == $other->blue() &&
+      $this->green() == $other->green();
+  }
 }
