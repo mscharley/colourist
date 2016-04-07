@@ -207,4 +207,16 @@ class HSB extends SaturatableColour
   {
     return "HSB(" . $this->hue() . ", " . $this->saturation() . ", " . $this->brightness() . ")";
   }
+
+  /**
+   * @inheritdoc
+   */
+  public function equals(Colour $other)
+  {
+    $other = $other->toHsb();
+
+    return $this->hue() == $other->hue() &&
+      $this->saturation() == $other->saturation() &&
+      $this->brightness() == $other->brightness();
+  }
 }
