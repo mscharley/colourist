@@ -235,6 +235,17 @@ abstract class Colour
   abstract public function toHsb();
 
   /**
+   * Check this colour is the same with other colour.
+   *
+   * @param Colour $other
+   *   The other colour that is going to be compared.
+   *
+   * @return bool
+   *   The colour is equal.
+   */
+  abstract public function equals(Colour $other);
+
+  /**
    * Alias for toHsb().
    *
    * HSV and HSB are the same thing but both names are in wide use, so we
