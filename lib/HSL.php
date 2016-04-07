@@ -219,4 +219,16 @@ class HSL extends SaturatableColour
   {
     return "HSL(" . $this->hue() . ", " . $this->saturation() . ", " . $this->lightness() . ")";
   }
+
+  /**
+   * @inheritdoc
+   */
+  public function equals(Colour $other)
+  {
+    $other = $other->toHsl();
+
+    return $this->hue() == $other->hue() &&
+      $this->saturation() == $other->saturation() &&
+      $this->lightness() == $other->lightness();
+  }
 }
