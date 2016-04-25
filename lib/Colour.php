@@ -237,7 +237,7 @@ abstract class Colour
   /**
    * Check equality of two different Colour's.
    *
-   * This is necessary as PHP's == can cause stack overflows when used 
+   * This is necessary as PHP's == can cause stack overflows when used
    * with self-referential objects like Colours.
    *
    * @param Colour $other
