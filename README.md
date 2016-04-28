@@ -25,7 +25,38 @@
 
 ## Usage
 
-> TODO: Write this.
+```
+$colour = \Colourist\Colour::fromHex('#ffccaa');
+
+// Automatically conversions to calculate values you need.
+$h = $colour->hue(); 
+$l = $colour->lightness();
+$b = $colour->brightness();
+
+// Distinguish between different types of saturation.
+$sl = $colour->hslSaturation();
+$sb = $colour->hsbSaturation();
+
+// Explicit conversions if you need them. 
+$hsl = $colour->toHSL();
+$sl == $hsl->saturation();
+// Colours are immutable - conversions are highly cached as a result.
+
+// Freely convert between colour spaces as required.
+$hsb = $colour->toHSB();
+$colour->equals($hsb->toRGB()); // TRUE
+```
+
+## Gotchas
+
+```
+$colour = \Colourist\Colour::fromHex('#ffccaa');
+$colour2 = \Colourist\Colour::fromHex('#aaccff');
+
+// You must use ->equals() for comparing equality.
+$colour->equals($colour2); // FALSE
+$colour == $colour2; // stack overflow
+```
 
   [gh-contrib]: https://github.com/mscharley/colourist/graphs/contributors
   [gh-issues]: https://github.com/mscharley/colourist/issues
