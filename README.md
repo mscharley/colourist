@@ -1,6 +1,6 @@
 # colourist
 
-[![Build Status](https://travis-ci.org/mscharley/colourist.svg)](https://travis-ci.org/mscharley/colourist)
+[![Circle CI](https://circleci.com/gh/mscharley/colourist/tree/master.svg?style=svg)](https://circleci.com/gh/mscharley/colourist/tree/master)
 [![Code Climate](https://codeclimate.com/github/mscharley/colourist/badges/gpa.svg)](https://codeclimate.com/github/mscharley/colourist)
 [![Dependency Status](https://gemnasium.com/mscharley/colourist.svg)](https://gemnasium.com/mscharley/colourist)
 
