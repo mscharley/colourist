@@ -3,7 +3,7 @@
 use QCheck\Generator as Gen;
 use QCheck\Quick;
 
-class QuickcheckTest extends PHPUnit_Framework_TestCase
+class QuickcheckTest extends \PHPUnit\Framework\TestCase
 {
   const RUN_COUNT = 5000;
 

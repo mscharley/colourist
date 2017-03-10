@@ -1,6 +1,6 @@
 <?php
 
-class ConversionTest extends PHPUnit_Framework_TestCase
+class ConversionTest extends \PHPUnit\Framework\TestCase
 {
   public function testReversibility()
   {

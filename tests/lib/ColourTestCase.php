@@ -2,7 +2,7 @@
 
 namespace Colourist\Tests;
 
-abstract class ColourTestCase extends \PHPUnit_Framework_TestCase
+abstract class ColourTestCase extends \PHPUnit\Framework\TestCase
 {
   /**
    * @return string

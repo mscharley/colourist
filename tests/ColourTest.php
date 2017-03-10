@@ -1,6 +1,6 @@
 <?php
 
-class ColourTest extends PHPUnit_Framework_TestCase
+class ColourTest extends \PHPUnit\Framework\TestCase
 {
   public function testFromHex()
   {
