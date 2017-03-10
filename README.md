@@ -25,7 +25,7 @@
 
 ## Usage
 
-```
+```php
 $colour = \Colourist\Colour::fromHex('#ffccaa');
 
 // Automatically conversions to calculate values you need.
@@ -49,7 +49,7 @@ $colour->equals($hsb->toRGB()); // TRUE
 
 ## Gotchas
 
-```
+```php
 $colour = \Colourist\Colour::fromHex('#ffccaa');
 $colour2 = \Colourist\Colour::fromHex('#aaccff');
 
