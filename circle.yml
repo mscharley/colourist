@@ -1,14 +1,35 @@
-machine:
-  php:
-    version: '7.1.0'
+version: 2
 
-dependencies:
-  cache_directories:
-    - "vendor"
-  pre:
-    - pecl install xdebug
-
-test:
-  override:
-    - vendor/bin/pake phpcs
-    - vendor/bin/pake phpunit
+jobs:
+  build:
+    working_directory: /root/colourist
+    docker:
+      - image: php:7.1-alpine
+      - image: php:7.0-alpine
+      - image: php:5.6-alpine
+    environment:
+      - COMPOSER_VERSION: 1.4.0
+    steps:
+      - run: apk update && apk add git openssh curl build-base autoconf gcc binutils
+      - run: echo "date.timezone = Etc/UTC" >> $PHP_INI_DIR/php.ini
+      - run: docker-php-ext-install bcmath
+      - checkout
+      - run: curl -L -o composer https://getcomposer.org/download/$COMPOSER_VERSION/composer.phar && chmod a+x composer
+      - restore_cache:
+          key: dependency-cache-<< checksum "composer.json" >>
+          paths:
+            - vendor
+      - run: ./composer install
+      - run: pecl install xdebug && docker-php-ext-enable xdebug
+      - run: php -i
+      - save_cache:
+          key: dependency-cache-<< checksum "composer.json" >>
+          paths:
+            - vendor
+      - run: vendor/bin/pake phpcs
+      - run: vendor/bin/pake phpunit
+      - store_test_results:
+          path: build/reports
+      - store_artifacts:
+          path: build
+          destination: build
