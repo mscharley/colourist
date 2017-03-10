@@ -26,9 +26,9 @@
   "require-dev": {
     "squizlabs/php_codesniffer": "@stable",
     "phpmd/phpmd": "@stable",
-    "phpunit/phpunit": "~5.0",
+    "phpunit/phpunit": "@stable",
     "steos/php-quickcheck": "dev-master",
-    "indeyets/pake": "~1.99",
+    "indeyets/pake": "@stable",
     "psy/psysh": "@stable",
     "codeclimate/php-test-reporter": "dev-master"
   }
