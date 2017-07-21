@@ -4,11 +4,11 @@ build: &BUILD
   environment:
     - COMPOSER_VERSION: 1.4.2
   steps:
-    - run: (php --version | head) > php.version
     - run: apk update && apk add git openssh curl build-base autoconf gcc binutils
     - run: echo "date.timezone = Etc/UTC" >> $PHP_INI_DIR/php.ini
     - run: docker-php-ext-install bcmath
     - checkout
+    - run: (php --version | head) > php.version
     - run: curl -L -o composer https://getcomposer.org/download/$COMPOSER_VERSION/composer.phar && chmod a+x composer
     - restore_cache:
         key: dependency-cache-<<checksum "php.version">>-<< checksum "composer.json" >>
