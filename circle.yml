@@ -11,14 +11,14 @@ build: &BUILD
     - run: (php --version | head) > php.version
     - run: curl -L -o composer https://getcomposer.org/download/$COMPOSER_VERSION/composer.phar && chmod a+x composer
     - restore_cache:
-        key: dependency-cache-<<checksum "php.version">>-<< checksum "composer.json" >>
+        key: dependency-cache-<< checksum "php.version" >>-<< checksum "composer.json" >>
         paths:
           - vendor
     - run: ./composer install
     - run: pecl install xdebug && docker-php-ext-enable xdebug
     - run: php -i
     - save_cache:
-        key: dependency-cache-<<checksum "php.version"-<< checksum "composer.json" >>
+        key: dependency-cache-<< checksum "php.version" >>-<< checksum "composer.json" >>
         paths:
           - vendor
     - run: vendor/bin/pake phpcs
