@@ -1,8 +1,6 @@
 version: 2
 
 build: &BUILD
-  environment:
-    - COMPOSER_VERSION: 1.4.2
   steps:
     - run: apk update && apk add git openssh curl build-base autoconf gcc binutils
     - run: echo "date.timezone = Etc/UTC" >> $PHP_INI_DIR/php.ini
@@ -15,7 +13,7 @@ build: &BUILD
         paths:
           - vendor
     - run: ./composer install
-    #- run: pecl install xdebug && docker-php-ext-enable xdebug
+    - run: if [ $PHP_VERSION != '7.2' ]; then pecl install xdebug && docker-php-ext-enable xdebug; fi
     - run: php -i
     - save_cache:
         key: dependency-cache-<< checksum "php.version" >>-<< checksum "composer.json" >>
@@ -33,21 +31,34 @@ jobs:
   php56:
     <<: *BUILD
     working_directory: /root/colourist
+    environment:
+      - COMPOSER_VERSION: 1.4.2
+      - PHP_VERSION: 5.6
     docker:
       - image: php:5.6.31-alpine
   php70:
     <<: *BUILD
     working_directory: /root/colourist
+    environment:
+      - COMPOSER_VERSION: 1.4.2
+      - PHP_VERSION: 7.0
     docker:
       - image: php:7.0.21-alpine
   php71:
     <<: *BUILD
     working_directory: /root/colourist
+    environment:
+      - COMPOSER_VERSION: 1.4.2
+      - PHP_VERSION: 7.1
     docker:
       - image: php:7.1.7-alpine
   php72:
     <<: *BUILD
     working_directory: /root/colourist
+    environment:
+      - COMPOSER_VERSION: 1.4.2
+      - PHP_VERSION: 7.2
+      - 
     docker:
       - image: php:7.2.0RC1-alpine
 
