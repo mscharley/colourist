@@ -15,7 +15,7 @@ build: &BUILD
         paths:
           - vendor
     - run: ./composer install
-    - run: pecl install xdebug && docker-php-ext-enable xdebug
+    #- run: pecl install xdebug && docker-php-ext-enable xdebug
     - run: php -i
     - save_cache:
         key: dependency-cache-<< checksum "php.version" >>-<< checksum "composer.json" >>
