@@ -45,6 +45,11 @@ jobs:
     working_directory: /root/colourist
     docker:
       - image: php:7.1.7-alpine
+  php72:
+    <<: *BUILD
+    working_directory: /root/colourist
+    docker:
+      - image: php:7.2.0RC1-alpine
 
 workflows:
   version: 2
@@ -53,3 +58,4 @@ workflows:
       - php56
       - php70
       - php71
+      - php72
