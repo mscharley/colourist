@@ -4,9 +4,6 @@ namespace Colourist\Tests;
 
 trait HueCases
 {
-  abstract public function assertSame($expected, $actual, $message = '');
-  abstract public function newTestedClass(...$args);
-
   public function testHueWrapping()
   {
     $c = $this->newTestedClass(390, 40, 60);
