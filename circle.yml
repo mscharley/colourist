@@ -13,7 +13,7 @@ build: &BUILD
         paths:
           - vendor
     - run: ./composer install
-    - run: if [ $PHP_VERSION != '7.2' ]; then pecl install xdebug && docker-php-ext-enable xdebug; fi
+    - run: pecl install xdebug-$XDEBUG_VERSION && docker-php-ext-enable xdebug
     - run: php -i
     - save_cache:
         key: dependency-cache-<< checksum "php.version" >>-<< checksum "composer.json" >>
@@ -34,6 +34,7 @@ jobs:
     environment:
       - COMPOSER_VERSION: 1.4.2
       - PHP_VERSION: 5.6
+      - XDEBUG_VERSION: 2.5.5
     docker:
       - image: php:5.6.31-alpine
   php70:
@@ -42,6 +43,7 @@ jobs:
     environment:
       - COMPOSER_VERSION: 1.4.2
       - PHP_VERSION: 7.0
+      - XDEBUG_VERSION: stable
     docker:
       - image: php:7.0.21-alpine
   php71:
@@ -50,6 +52,7 @@ jobs:
     environment:
       - COMPOSER_VERSION: 1.4.2
       - PHP_VERSION: 7.1
+      - XDEBUG_VERISON: stable
     docker:
       - image: php:7.1.20-alpine
   php72:
@@ -58,6 +61,7 @@ jobs:
     environment:
       - COMPOSER_VERSION: 1.4.2
       - PHP_VERSION: 7.2
+      - XDEBUG_VERISON: stable
     docker:
       - image: php:7.2.8-alpine
 
