@@ -52,7 +52,7 @@ jobs:
     environment:
       - COMPOSER_VERSION: 1.4.2
       - PHP_VERSION: 7.1
-      - XDEBUG_VERISON: stable
+      - XDEBUG_VERSION: stable
     docker:
       - image: php:7.1.20-alpine
   php72:
@@ -61,7 +61,7 @@ jobs:
     environment:
       - COMPOSER_VERSION: 1.4.2
       - PHP_VERSION: 7.2
-      - XDEBUG_VERISON: stable
+      - XDEBUG_VERSION: stable
     docker:
       - image: php:7.2.8-alpine
 
